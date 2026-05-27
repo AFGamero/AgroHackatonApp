@@ -1,4 +1,4 @@
-s# Casos de Uso Backend
+# Casos de Uso Backend
 
 ## Contexto
 
@@ -470,7 +470,7 @@ Este documento define los casos de uso iniciales para el backend de AgroTrace Ma
 
 ## CU-013 Publicar Producto
 
-**Prioridad:** Post-MVP  
+**Prioridad:** MVP  
 **Actor principal:** Productor / Exportador  
 **Objetivo:** Publicar productos disponibles para comercializacion.
 
