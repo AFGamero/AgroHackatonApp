@@ -1,0 +1,120 @@
+databaseChangeLog:
+  - changeSet:
+      id: V3-001
+      author: agrotrace
+      changes:
+        - createTable:
+            tableName: farms
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  defaultValueComputed: gen_random_uuid()
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: producer_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_farms_producer
+                    references: producers(id)
+              - column:
+                  name: name
+                  type: varchar(120)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: location
+                  type: varchar(255)
+              - column:
+                  name: latitude
+                  type: decimal(10, 8)
+              - column:
+                  name: longitude
+                  type: decimal(11, 8)
+              - column:
+                  name: area_hectares
+                  type: decimal(10, 2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(800)
+              - column:
+                  name: status
+                  type: varchar(50)
+                  defaultValue: ACTIVE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_by
+                  type: uuid
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: modified_by
+                  type: uuid
+              - column:
+                  name: modified_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+        - createIndex:
+            indexName: idx_farms_producer_id
+            tableName: farms
+            columns:
+              - column:
+                  name: producer_id
+
+  - changeSet:
+      id: V3-002
+      author: agrotrace
+      changes:
+        - createTable:
+            tableName: farm_photos
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  defaultValueComputed: gen_random_uuid()
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: farm_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_farm_photos_farm
+                    references: farms(id)
+              - column:
+                  name: url
+                  type: varchar(500)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(255)
+              - column:
+                  name: is_primary
+                  type: boolean
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+        - createIndex:
+            indexName: idx_farm_photos_farm_id
+            tableName: farm_photos
+            columns:
+              - column:
+                  name: farm_id

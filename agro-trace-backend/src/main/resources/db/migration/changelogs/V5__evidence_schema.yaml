@@ -1,0 +1,64 @@
+databaseChangeLog:
+  - changeSet:
+      id: V5-001
+      author: agrotrace
+      changes:
+        - createTable:
+            tableName: evidence
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  defaultValueComputed: gen_random_uuid()
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: lot_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_evidence_lot
+                    references: lots(id)
+              - column:
+                  name: crop_status_event_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: fk_evidence_crop_status_event
+                    references: crop_status_events(id)
+              - column:
+                  name: type
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: url
+                  type: varchar(500)
+              - column:
+                  name: comment
+                  type: varchar(1000)
+              - column:
+                  name: description
+                  type: varchar(255)
+              - column:
+                  name: visible_publicly
+                  type: boolean
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false
+              - column:
+                  name: registered_by
+                  type: uuid
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+        - createIndex:
+            indexName: idx_evidence_lot_id
+            tableName: evidence
+            columns:
+              - column:
+                  name: lot_id

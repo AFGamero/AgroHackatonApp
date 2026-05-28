@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - include:
+      file: db/migration/changelogs/V1__users_schema.yaml
+  - include:
+      file: db/migration/changelogs/V2__producers_schema.yaml
+  - include:
+      file: db/migration/changelogs/V3__farms_schema.yaml
+  - include:
+      file: db/migration/changelogs/V4__lots_schema.yaml
+  - include:
+      file: db/migration/changelogs/V5__evidence_schema.yaml
+  - include:
+      file: db/migration/changelogs/V6__certifications_schema.yaml
+  - include:
+      file: db/migration/changelogs/V7__passports_qr_schema.yaml
+  - include:
+      file: db/migration/changelogs/V8__tourism_purchase_schema.yaml

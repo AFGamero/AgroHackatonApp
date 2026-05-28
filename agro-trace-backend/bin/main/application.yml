@@ -1,0 +1,73 @@
+spring:
+  application:
+    name: agro-trace-backend
+  
+  profiles:
+    active: h2
+  
+  datasource:
+    url: jdbc:postgresql://localhost:5432/agrotrace
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  
+  liquibase:
+    enabled: true
+    change-log: classpath:db/migration/master.yaml
+  
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    deserialization:
+      fail-on-unknown-properties: false
+  
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=1000,expireAfterAccess=3600s
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api/v1
+
+logging:
+  level:
+    root: INFO
+    com.agrotrace: DEBUG
+    org.springframework.web: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:change-me-in-production}
+    expiration: 900000
+    refresh-expiration: 604800000
+  
+  storage:
+    type: local
+    local:
+      base-path: ./storage/evidence
+    s3:
+      bucket: ${AWS_S3_BUCKET:agro-trace-evidence}
+      region: ${AWS_REGION:us-east-1}
+  
+  cors:
+    allowed-origins: http://localhost:5173,http://localhost:3000

@@ -1,0 +1,161 @@
+databaseChangeLog:
+  - changeSet:
+      id: V8-001
+      author: agrotrace
+      changes:
+        - createTable:
+            tableName: tourism_experiences
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  defaultValueComputed: gen_random_uuid()
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: farm_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_tourism_experiences_farm
+                    references: farms(id)
+              - column:
+                  name: name
+                  type: varchar(120)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(800)
+              - column:
+                  name: duration_minutes
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price
+                  type: decimal(10, 2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: capacity
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: availability
+                  type: varchar(500)
+              - column:
+                  name: is_published
+                  type: boolean
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_by
+                  type: uuid
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: modified_by
+                  type: uuid
+              - column:
+                  name: modified_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+        - createIndex:
+            indexName: idx_tourism_experiences_farm_id
+            tableName: tourism_experiences
+            columns:
+              - column:
+                  name: farm_id
+
+  - changeSet:
+      id: V8-002
+      author: agrotrace
+      changes:
+        - createTable:
+            tableName: purchase_requests
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  defaultValueComputed: gen_random_uuid()
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: lot_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: fk_purchase_requests_lot
+                    references: lots(id)
+              - column:
+                  name: country
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: quantity
+                  type: decimal(10, 2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: unit
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: contact_name
+                  type: varchar(120)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: company
+                  type: varchar(120)
+              - column:
+                  name: email
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: phone
+                  type: varchar(20)
+              - column:
+                  name: message
+                  type: varchar(1000)
+              - column:
+                  name: status
+                  type: varchar(50)
+                  defaultValue: RECEIVED
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: modified_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+        - createIndex:
+            indexName: idx_purchase_requests_lot_id
+            tableName: purchase_requests
+            columns:
+              - column:
+                  name: lot_id
+        - createIndex:
+            indexName: idx_purchase_requests_email
+            tableName: purchase_requests
+            columns:
+              - column:
+                  name: email

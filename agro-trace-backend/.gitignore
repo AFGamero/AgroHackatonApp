@@ -1,0 +1,35 @@
+# Build outputs
+build/
+.gradle/
+!gradle/wrapper/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.project
+.classpath
+*.swp
+*.swo
+
+# Secrets
+application-local.yml
+.env
+*.env
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test
+test-output/
+
+# Storage (local file uploads)
+storage/

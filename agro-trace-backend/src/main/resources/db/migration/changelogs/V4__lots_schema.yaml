@@ -1,0 +1,148 @@
+databaseChangeLog:
+  - changeSet:
+      id: V4-001
+      author: agrotrace
+      changes:
+        - createTable:
+            tableName: lots
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  defaultValueComputed: gen_random_uuid()
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: farm_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_lots_farm
+                    references: farms(id)
+              - column:
+                  name: code
+                  type: varchar(40)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(120)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: area_hectares
+                  type: decimal(10, 2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: crop
+                  type: varchar(80)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: variety
+                  type: varchar(120)
+              - column:
+                  name: planting_date
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: current_status
+                  type: varchar(50)
+                  defaultValue: NO_STATUS
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(800)
+              - column:
+                  name: status
+                  type: varchar(50)
+                  defaultValue: ACTIVE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_by
+                  type: uuid
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: modified_by
+                  type: uuid
+              - column:
+                  name: modified_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+        - createIndex:
+            indexName: idx_lots_farm_id
+            tableName: lots
+            columns:
+              - column:
+                  name: farm_id
+        - createIndex:
+            indexName: idx_lots_farm_code
+            tableName: lots
+            unique: true
+            columns:
+              - column:
+                  name: farm_id
+              - column:
+                  name: code
+
+  - changeSet:
+      id: V4-002
+      author: agrotrace
+      changes:
+        - createTable:
+            tableName: crop_status_events
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  defaultValueComputed: gen_random_uuid()
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: lot_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_crop_status_events_lot
+                    references: lots(id)
+              - column:
+                  name: crop_status
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: event_date
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: observations
+                  type: varchar(1000)
+              - column:
+                  name: registered_by
+                  type: uuid
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+        - createIndex:
+            indexName: idx_crop_status_events_lot_id
+            tableName: crop_status_events
+            columns:
+              - column:
+                  name: lot_id

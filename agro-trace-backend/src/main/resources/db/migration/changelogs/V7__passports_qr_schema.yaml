@@ -1,0 +1,86 @@
+databaseChangeLog:
+  - changeSet:
+      id: V7-001
+      author: agrotrace
+      changes:
+        - createTable:
+            tableName: digital_passports
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  defaultValueComputed: gen_random_uuid()
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: lot_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    unique: true
+                    foreignKeyName: fk_digital_passports_lot
+                    references: lots(id)
+              - column:
+                  name: public_identifier
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: public_url
+                  type: varchar(500)
+              - column:
+                  name: is_published
+                  type: boolean
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+              - column:
+                  name: published_at
+                  type: timestamp
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+        - createIndex:
+            indexName: idx_digital_passports_public_identifier
+            tableName: digital_passports
+            unique: true
+            columns:
+              - column:
+                  name: public_identifier
+
+  - changeSet:
+      id: V7-002
+      author: agrotrace
+      changes:
+        - createTable:
+            tableName: qr_codes
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  defaultValueComputed: gen_random_uuid()
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: passport_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    unique: true
+                    foreignKeyName: fk_qr_codes_passport
+                    references: digital_passports(id)
+              - column:
+                  name: qr_image_url
+                  type: varchar(500)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
