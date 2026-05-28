@@ -11,7 +11,7 @@ import com.agrotrace.agrotrace.modules.users.domain.model.UserStatus;
 import com.agrotrace.agrotrace.modules.users.domain.repository.UserRepository;
 import com.agrotrace.agrotrace.shared.exceptions.BusinessException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,7 +27,7 @@ public class AuthService {
     private final SessionRepository sessionRepository;
     private final JwtTokenProvider jwtTokenProvider;
     private final JwtConfig jwtConfig;
-    private final PasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public TokenResponseDTO register(RegisterRequestDTO dto) {
         if (userRepository.existsByEmail(dto.email())) {
