@@ -34,6 +34,11 @@ dependencies {
     implementation("org.liquibase:liquibase-core")
     implementation("org.hibernate.orm:hibernate-spatial:6.6.4.Final")
 
+    // Security (JWT + BCrypt sin Spring Security)
+    implementation("io.jsonwebtoken:jjwt-api:0.12.6")
+    runtimeOnly("io.jsonwebtoken:jjwt-impl:0.12.6")
+    runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.12.6")
+
     // Lombok
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
