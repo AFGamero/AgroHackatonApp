@@ -11,6 +11,7 @@ import com.agrotrace.agrotrace.modules.users.domain.model.UserStatus;
 import com.agrotrace.agrotrace.modules.users.domain.repository.UserRepository;
 import com.agrotrace.agrotrace.shared.exceptions.BusinessException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,6 +27,7 @@ public class AuthService {
     private final SessionRepository sessionRepository;
     private final JwtTokenProvider jwtTokenProvider;
     private final JwtConfig jwtConfig;
+    private final PasswordEncoder passwordEncoder;
 
     public TokenResponseDTO register(RegisterRequestDTO dto) {
         if (userRepository.existsByEmail(dto.email())) {
@@ -35,7 +37,7 @@ public class AuthService {
         User user = new User();
         user.setEmail(dto.email());
         user.setFullName(dto.fullName());
-        user.setPasswordHash(dto.password());
+        user.setPasswordHash(passwordEncoder.encode(dto.password()));
         user.setRole(UserRole.valueOf(dto.role()));
         user.setStatus(UserStatus.ACTIVE);
         user.setEmailVerified(false);
@@ -48,7 +50,7 @@ public class AuthService {
         User user = userRepository.findByEmail(dto.email())
                 .orElseThrow(() -> new BusinessException("INVALID_CREDENTIALS", "Credenciales invalidas", 401));
 
-        if (!dto.password().equals(user.getPasswordHash())) {
+        if (!passwordEncoder.matches(dto.password(), user.getPasswordHash())) {
             throw new BusinessException("INVALID_CREDENTIALS", "Credenciales invalidas", 401);
         }
 

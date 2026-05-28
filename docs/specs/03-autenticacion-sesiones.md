@@ -1,9 +1,9 @@
 # Feature Specification: Autenticacion y Sesiones
 
-**Version**: 1.0.0  
+**Version**: 1.1.0 - MVP  
 **Creado**: 27/05/2026  
-**Actualizado**: 27/05/2026  
-**Estado**: Borrador  
+**Actualizado**: 28/05/2026  
+**Estado**: Implementado (logica de auth, sin Spring Security)  
 **Autor**: Equipo AgroTrace  
 **Revisor**: Pendiente
 
@@ -28,9 +28,7 @@
 
 La autenticacion y gestion de sesiones protege los recursos privados de AgroTrace Magdalena. Esta feature define como un usuario activo obtiene tokens, renueva su sesion, cierra sesion y accede a endpoints protegidos segun su rol.
 
-El objetivo del MVP es implementar un esquema seguro y simple basado en `access_token` JWT de corta duracion y `refresh_token` persistido como hash, con capacidad de revocacion cuando el usuario cierra sesion, cambia de estado o se detecta uso invalido.
-
-Esta spec complementa `02-registro-usuarios.md`: el registro crea la identidad, mientras que autenticacion y sesiones definen el acceso continuo al backend.
+**Estado MVP**: La logica de autenticacion esta implementada (registro, login, refresh, logout con JWT + BCrypt), pero **Spring Security no esta activado**. Los endpoints no estan protegidos por rol en esta fase. Ver `11-spring-security-pendiente.md` para el plan de activacion.
 
 ---
 

@@ -1,33 +1,20 @@
 # Feature Specification: Spring Security Implementation
 
-**Version**: 1.0.0  
-**Creado**: 28/05/2026  
-**Estado**: Pendiente (Post-MVP)  
-**Depende de**: 03-autenticacion-sesiones.md, 10-control-acceso-endpoints.md  
-
----
-
-## Indice
-
-1. [Contexto](#1-contexto)
-2. [Dependencia requerida](#2-dependencia-requerida)
-3. [SecurityConfig (SecurityFilterChain)](#3-securityconfig)
-4. [JwtAuthenticationFilter](#4-jwtauthenticationfilter)
-5. [PasswordEncoder (BCrypt)](#5-passwordencoder)
-6. [AuditorAware integrado](#6-auditoraware-integrado)
-7. [Plan de activacion](#7-plan-de-activacion)
+**Version**: 1.1.0  
+**Actualizado**: 28/05/2026  
+**Estado**: Pendiente (MVP: BCrypt + JWT implementados, SecurityFilterChain no activado)  
+**Depende de**: 03-autenticacion-sesiones.md, 10-control-acceso-endpoints.md
 
 ---
 
 ## 1. Contexto
 
-Actualmente la logica de autenticacion (login, register, refresh, logout) esta implementada en `AuthService` y `AuthController`. Sin embargo, **Spring Security NO esta activado** (no se uso `spring-boot-starter-security`). Esto significa que:
+En el MVP la logica de autenticacion esta completa:
+- **BCrypt**: Contraseñas hasheadas al registrar y verificadas al login. Bean `PasswordEncoder` en `PasswordEncoderConfig.java`. ✅
+- **JWT**: Tokens generados y validados. `JwtTokenProvider.java` implementado. ✅
+- **Sesiones**: `Session` entity + `SessionRepository` para refresh tokens. ✅
 
-- Los tokens JWT se generan y validan, pero los endpoints **no estan protegidos**.
-- No hay filtro que verifique el token en cada request.
-- Las contraseñas se comparan en texto plano (sin BCrypt).
-
-Esta spec documenta lo que falta para activar Spring Security en un futuro sprint.
+Lo que falta: **Spring Security Filter Chain** para proteger endpoints por rol.
 
 ---
 
@@ -139,35 +126,26 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
 ## 5. PasswordEncoder (BCrypt)
 
-Al activar Spring Security:
-
-1. **Registro**: Encriptar con `passwordEncoder.encode(password)`.
-2. **Login**: Validar con `passwordEncoder.matches(raw, hashed)`.
-3. **Bean** en `SecurityConfig`:
-   ```java
-   @Bean
-   public PasswordEncoder passwordEncoder() {
-       return new BCryptPasswordEncoder();
-   }
-   ```
-
-### Cambios en AuthService:
+Ya implementado en MVP:
 
 ```java
-// Antes (texto plano)
-user.setPasswordHash(dto.password());
+// PasswordEncoderConfig.java
+@Configuration
+public class PasswordEncoderConfig {
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+}
+```
 
-// Despues (BCrypt)
+```java
+// AuthService.java - ya usa BCrypt
 user.setPasswordHash(passwordEncoder.encode(dto.password()));
+passwordEncoder.matches(dto.password(), user.getPasswordHash());
 ```
 
-```java
-// Antes
-if (!dto.password().equals(user.getPasswordHash())) { ... }
-
-// Despues
-if (!passwordEncoder.matches(dto.password(), user.getPasswordHash())) { ... }
-```
+**Status: ✅ COMPLETADO**
 
 ---
 
