@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "email-design": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/design/email-design/SKILL.md",
+      "computedHash": "86ef01426b6fbd35ad5b6ab9f2b60461737d67c6a0b2d349011e513eb2514bfc"
+    }
+  }
+}
