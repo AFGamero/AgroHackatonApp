@@ -1,8 +1,8 @@
 # Feature Specification: Lotes y Trazabilidad Agricola
 
-**Version**: 1.0.0  
+**Version**: 2.0.0  
 **Creado**: 27/05/2026  
-**Actualizado**: 27/05/2026  
+**Actualizado**: 28/05/2026  
 **Estado**: Borrador  
 **Autor**: Equipo AgroTrace  
 **Revisor**: Pendiente
@@ -26,11 +26,11 @@
 
 ## 1. Contexto y objetivo
 
-El lote es la unidad productiva principal de AgroTrace Magdalena. Sobre un lote se registran el cultivo, variedad, fecha de siembra, estados de avance, evidencias y certificaciones que luego alimentan el pasaporte digital verificable mediante QR.
+El lote es la unidad productiva principal de AgroTrace Magdalena. Sobre un lote se registran el cultivo, variedad, fecha de siembra, estados de certificacion (Rainforest Alliance, Fairtrade, etc.), evidencias y certificaciones que luego alimentan el pasaporte digital verificable mediante QR.
 
-Esta feature define la gestion backend de lotes y trazabilidad agricola inicial. La trazabilidad no debe depender solo del estado actual: cada cambio relevante debe quedar registrado como evento historico para permitir consulta publica, auditoria y confianza comercial.
+Esta feature define la gestion backend de lotes y trazabilidad de certificaciones. La trazabilidad no debe depender solo de la certificacion actual: cada cambio de estado certificador debe quedar registrado como evento historico para permitir consulta publica, auditoria y confianza comercial.
 
-El objetivo del MVP es permitir que un productor activo cree lotes dentro de sus fincas activas, registre estados de cultivo, adjunte evidencias y consulte el historial completo del lote.
+El objetivo del MVP es permitir que un productor activo cree lotes dentro de sus fincas activas, registre estados de certificacion, adjunte evidencias y consulte el historial completo del lote.
 
 ---
 
@@ -65,24 +65,25 @@ Representa una unidad productiva dentro de una finca.
 | `cultivo` | `String` | Maximo 80 caracteres. Ejemplo: cacao, cafe, banano. | Si |
 | `variedad` | `String` | Maximo 120 caracteres. | No |
 | `fecha_siembra` | `Date` | No puede ser futura. | Si |
-| `estado_actual` | `Enum` | Ultimo estado valido registrado. Puede iniciar como `SIN_ESTADO`. | Si |
+| `estado_actual` | `Enum` | Ultimo estado de certificacion registrado. Inicia como `NO_CERTIFICADO`. | Si |
 | `descripcion` | `String` | Maximo 800 caracteres. | No |
 | `estado` | `Enum` | Valores definidos en `LotStatus`. Default `ACTIVO`. | Si |
 | `creado_en` | `Timestamp` | Generado automaticamente. UTC. Inmutable. | Si |
 | `actualizado_en` | `Timestamp` | Actualizado automaticamente. UTC. | Si |
 
-### 3.2 Evento de Estado de Cultivo (`CropStatusEvent`)
+### 3.2 Evento de Estado de Certificacion (`CertificationStatusEvent`)
 
-Representa un cambio historico en el desarrollo del cultivo.
+Representa un cambio historico en el estado certificador del lote.
 
 | Atributo | Tipo | Restricciones | Requerido |
 | --- | --- | --- | :---: |
 | `id` | `UUID` | Generado automaticamente. Inmutable. | Si |
 | `lot_id` | `UUID (FK)` | Lote asociado. | Si |
-| `estado_cultivo` | `Enum` | Valores definidos en `CropStatus`. | Si |
+| `certification_status` | `Enum` | Valores definidos en `CertificationStatus`. | Si |
 | `fecha_evento` | `Date` | No puede ser futura. | Si |
 | `observaciones` | `String` | Maximo 1000 caracteres. | No |
 | `registrado_por` | `UUID (FK)` | Usuario que registro el evento. | Si |
+| `certification_id` | `UUID (FK)` | Vinculacion opcional al documento de certificacion formal. | No |
 | `creado_en` | `Timestamp` | Generado automaticamente. UTC. Inmutable. | Si |
 
 ### 3.3 Evidencia (`Evidence`)
@@ -93,7 +94,7 @@ Representa una prueba visual o textual asociada al lote o a un evento de cultivo
 | --- | --- | --- | :---: |
 | `id` | `UUID` | Generado automaticamente. Inmutable. | Si |
 | `lot_id` | `UUID (FK)` | Lote asociado. | Si |
-| `crop_status_event_id` | `UUID (FK)` | Evento asociado. Opcional. | No |
+| `certification_status_event_id` | `UUID (FK)` | Evento asociado. Opcional. | No |
 | `tipo` | `Enum` | Valores definidos en `EvidenceType`. | Si |
 | `url` | `String` | Requerido para `FOTO` y `VIDEO`. URL valida. | No |
 | `comentario` | `String` | Requerido para `COMENTARIO`. Maximo 1000 caracteres. | No |
@@ -104,14 +105,15 @@ Representa una prueba visual o textual asociada al lote o a un evento de cultivo
 
 ### 3.4 Enumeraciones
 
-#### `CropStatus`
+#### `CertificationStatus`
 
-- `SIEMBRA`
-- `CRECIMIENTO`
-- `FLORACION`
-- `FRUCTIFICACION`
-- `MADURACION`
-- `COSECHA`
+Reemplaza a `CropStatus`. Representa el estado de certificacion del lote (Fairtrade y/o Rainforest).
+
+- `NO_CERTIFICADO`
+- `EN_PROCESO`
+- `RAINFOREST`
+- `FAIRTRADE`
+- `RAINFOREST_FAIRTRADE`
 
 #### `LotStatus`
 
@@ -129,9 +131,10 @@ Representa una prueba visual o textual asociada al lote o a un evento de cultivo
 
 ```text
 Farm (1) ---- (N) Lot
-Lot (1) ---- (N) CropStatusEvent
+Lot (1) ---- (N) CertificationStatusEvent
 Lot (1) ---- (N) Evidence
-CropStatusEvent (1) ---- (N) Evidence
+CertificationStatusEvent (1) ---- (N) Evidence
+CertificationStatusEvent (N) ---- (0..1) Certification
 Lot (1) ---- (N) Certification
 Lot (1) ---- (0..1) DigitalPassport
 Lot (1) ---- (N) AuditLog
@@ -223,23 +226,23 @@ When   el productor autenticado intenta listar sus lotes
 Then   el sistema rechaza la solicitud con 403 o 404 segun politica de seguridad
 ```
 
-### US-03 - Registrar estado de cultivo `P1`
+### US-03 - Registrar estado de certificacion `P1`
 
 **Como** productor,  
-**quiero** registrar el avance del cultivo de un lote,  
-**para que** el historial agricola quede documentado y consultable.
+**quiero** registrar el estado de certificacion de un lote,  
+**para que** el historial de certificaciones quede documentado y consultable.
 
-**Por que P1**: Los estados de cultivo son el centro de la trazabilidad agricola.
+**Por que P1**: Los estados de certificacion son el centro de la trazabilidad y generan confianza comercial.
 
-**Test independiente**: El productor registra `CRECIMIENTO` en un lote propio. El test es exitoso si se crea un evento y el lote actualiza `estado_actual`.
+**Test independiente**: El productor registra `RAINFOREST_ALLIANCE` en un lote propio. El test es exitoso si se crea un evento y el lote actualiza `current_status`.
 
 #### Escenario 1 - Estado registrado correctamente
 
 ```gherkin
 Given  que existe un lote ACTIVO de una finca propia
-When   el productor registra estado_cultivo CRECIMIENTO con fecha_evento valida
-Then   el sistema crea un CropStatusEvent
-And    actualiza estado_actual del lote a CRECIMIENTO
+When   el productor registra certification_status RAINFOREST_ALLIANCE con fecha_evento valida
+Then   el sistema crea un CertificationStatusEvent
+And    actualiza current_status del lote a RAINFOREST_ALLIANCE
 And    registra auditoria de cambio de estado
 ```
 
@@ -247,9 +250,9 @@ And    registra auditoria de cambio de estado
 
 ```gherkin
 Given  que existe un lote ACTIVO
-When   el productor envia un estado_cultivo que no pertenece al catalogo
+When   el productor envia un certification_status que no pertenece al catalogo
 Then   el sistema rechaza la solicitud
-And    no actualiza estado_actual
+And    no actualiza current_status
 ```
 
 #### Escenario 3 - Fecha futura
@@ -581,9 +584,9 @@ Authorization: Bearer access-token
 ]
 ```
 
-### 9.3 Registrar estado de cultivo
+### 9.3 Registrar estado de certificacion
 
-`POST /lots/{lotId}/status-events`
+`POST /lots/{lotId}/certification-status`
 
 #### Headers
 
@@ -595,9 +598,10 @@ Authorization: Bearer access-token
 
 ```json
 {
-  "estado_cultivo": "CRECIMIENTO",
+  "certification_status": "RAINFOREST_ALLIANCE",
   "fecha_evento": "2026-05-20",
-  "observaciones": "El cultivo presenta buen desarrollo vegetativo."
+  "observaciones": "Certificacion Rainforest Alliance otorgada.",
+  "certification_id": "uuid-opcional"
 }
 ```
 
@@ -607,9 +611,10 @@ Authorization: Bearer access-token
 {
   "id": "uuid",
   "lot_id": "uuid",
-  "estado_cultivo": "CRECIMIENTO",
+  "certification_status": "RAINFOREST_ALLIANCE",
   "fecha_evento": "2026-05-20",
-  "observaciones": "El cultivo presenta buen desarrollo vegetativo."
+  "observaciones": "Certificacion Rainforest Alliance otorgada.",
+  "certification_id": "uuid"
 }
 ```
 
@@ -772,4 +777,5 @@ Los siguientes puntos quedan excluidos de esta feature inicial y deben especific
 
 | Version | Fecha | Autor | Descripcion |
 | --- | --- | --- | --- |
+| 2.0.0 | 28/05/2026 | Equipo AgroTrace | Reemplazo de CropStatus por CertificationStatus: los estados del cultivo ahora representan certificaciones (Rainforest Alliance, Fairtrade, etc.) en lugar del ciclo agricola. Se agrego FK opcional a certifications. |
 | 1.0.0 | 27/05/2026 | Equipo AgroTrace | Version inicial de la especificacion de lotes y trazabilidad agricola. |

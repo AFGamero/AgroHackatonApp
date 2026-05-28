@@ -1,0 +1,80 @@
+databaseChangeLog:
+  - changeSet:
+      id: V9-001
+      author: agrotrace
+      changes:
+        - renameTable:
+            oldTableName: crop_status_events
+            newTableName: certification_status_events
+
+  - changeSet:
+      id: V9-002
+      author: agrotrace
+      changes:
+        - renameColumn:
+            tableName: certification_status_events
+            oldColumnName: crop_status
+            newColumnName: certification_status
+
+  - changeSet:
+      id: V9-003
+      author: agrotrace
+      changes:
+        - addColumn:
+            tableName: certification_status_events
+            columns:
+              - column:
+                  name: certification_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: fk_cert_status_events_certification
+                    references: certifications(id)
+                    nullable: true
+
+  - changeSet:
+      id: V9-004
+      author: agrotrace
+      changes:
+        - dropIndex:
+            indexName: idx_crop_status_events_lot_id
+            tableName: certification_status_events
+        - createIndex:
+            indexName: idx_cert_status_events_lot_id
+            tableName: certification_status_events
+            columns:
+              - column:
+                  name: lot_id
+
+  - changeSet:
+      id: V9-005
+      author: agrotrace
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: evidence
+            constraintName: fk_evidence_crop_status_event
+        - addForeignKeyConstraint:
+            baseTableName: evidence
+            baseColumnNames: crop_status_event_id
+            constraintName: fk_evidence_cert_status_event
+            referencedTableName: certification_status_events
+            referencedColumnNames: id
+            validate: true
+
+  - changeSet:
+      id: V9-006
+      author: agrotrace
+      changes:
+        - renameColumn:
+            tableName: evidence
+            oldColumnName: crop_status_event_id
+            newColumnName: certification_status_event_id
+
+  - changeSet:
+      id: V9-007
+      author: agrotrace
+      changes:
+        - update:
+            tableName: lots
+            columnName: current_status
+            value: NO_CERTIFICADO
+            where: current_status='NO_STATUS'
