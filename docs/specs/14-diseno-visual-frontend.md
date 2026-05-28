@@ -20,6 +20,8 @@
 7. [Responsive design](#7-responsive-design)
 8. [Accesibilidad](#8-accesibilidad)
 9. [Estilos de componentes por sección](#9-estilos-de-componentes-por-sección)
+10. [Assets necesarios](#10-assets-necesarios)
+11. [Historial de cambios](#11-historial-de-cambios)
 
 ---
 
@@ -538,57 +540,225 @@ CTA buttons: Primary (blanco) + Secondary (outline blanco)
 Imagen hero: foto de campo o producto (guineo)
 ```
 
-### 9.2 Dashboard del Productor
+### 9.2 Mascota Nebbi - Jaguar Representativo
+
+#### 9.2.1 Identidad de Nebbi
+
+Nebbi es la mascota oficial de AgroTrace Magdalena, representada como un jaguar verde con azul en honor a las tierras y el mar de la costa colombiana.
+
+| Atributo | Descripcion |
+| --- | --- |
+| Nombre | Nebbi |
+| Significado | "Jaguar" en la lengua de los Koguis, pueblo indígena de la Sierra Nevada de Santa Marta |
+| Colores | Verde Agro (#2D8B4E) y Azul Profundo (#1565C0), representando la naturaleza y el mar colombiano |
+| Personalidad | Amigable, confiable, conectado con la tierra, guardián de la trazabilidad |
+| Uso principal | Imagen del chatbot, elemento de marca, representación visual de la plataforma |
+
+#### 9.2.2 Representación visual
+
+Nebbi aparece como un jaguar estilizado con las siguientes caracteristicas:
+
+- **Forma**: Cuerpo de jaguar estilizado, posicion vertical o caminando
+- **Colores principales**:
+  - Pelaje base: Verde Agro (#2D8B4E)
+  - Manchas/patrones: Azul Profundo (#1565C0)
+  - Detalles: Amarillo dorado para ojos y accents
+- **Estilo**: Ilustracion flat design, simplificada y moderna
+- **Expresion**: Facial amigable, no amenazante, conectando con usuarios
+
+#### 9.2.3 Aplicaciones de Nebbi
+
+| Aplicacion | Descripcion |
+| --- | --- |
+| Chatbot | Nebbi aparece como la identidad visual del chatbot, reemplazando el icono generico de chat |
+| Loader/Splash | Animacion de Nebbi durante cargas |
+| Empty states | Ilustraciones con Nebbi para estados sin contenido |
+| Landing page | Elemento decorativo cerca del hero |
+| About/Team | Seccion que menciona a Nebbi como parte de la identidad |
+
+#### 9.2.4 Chatbot Nebbi
+
+El chatbot de asistencia (definido en `13-chatbot.md`) usa a Nebbi como su identidad visual:
 
 ```
-Sidebar: navegación con iconos de agrícolas
-Cards de finca: imagen, nombre, ubicación, certificaciones
-Estado de cultivo: badge con color según estado
-Quick actions: iconos grandes (Registrar lote, Subir evidencia, Ver solicitudes)
+Launcher del chatbot: Icono de Nebbi en lugar de icono de chat generico
+Ventana abierta:
+  - Header: Icono de Nebbi + nombre "Nebbi" + badge de estado online
+  - Mensajes del bot: Avatar de Nebbi junto a cada respuesta
+  - Typing indicator: Animacion de Nebbi esperando
+  - Input area: Diseño consistente con la identidad
 ```
 
-### 9.3 Catálogo de productos
+### 9.3 Mapa de ubicación de productos
+
+La seccion de mapa permite a los usuarios buscar productos agricolas de la costa colombiana visualmente en un mapa interactivo.
+
+#### 9.3.1 Descripcion general
+
+El mapa muestra puntos de ubicacion de productores y fincas en el departamento del Magdalena. Cada punto representa un lugar donde se produce un producto agricultural especifico.
+
+#### 9.3.2 Barra de busqueda
 
 ```
-Grid de cards: 4 columnas desktop, 2 tablet, 1 móvil
-Filtros: sidebar colapsable en móvil
-Card producto: imagen, nombre, precio, ubicacion, badges de certificacion
-Hover: sombra elevada, botón "Ver detalle" visible
+Ubicacion: Parte superior del mapa
+Placeholder: "Buscar productos (guineo, banano, cafe...)"
+Autocompletado: Sugiere productos mientras el usuario escribe
+Filtros: Dropdown para filtrar por tipo de producto
 ```
 
-### 9.4 Pasaporte digital
+#### 9.3.3 Iconos distintivos por producto
+
+Cada producto tiene un icono representativo en el mapa:
+
+| Producto | Icono | Descripcion visual |
+| --- | --- | --- |
+| Guineo Verde | Racimo de guineos | Icono estilizado de racimo de guineos |
+| Banano | Banano individual | Icono de banano maduro |
+| Cafe | Grano de cafe | Icono de grano de cafe con hoja |
+| Cacao | Cacao en mazorca | Icono de mazorca de cacao |
+| Aguacate | Aguacate entero | Icono de aguacate partido |
+| Naranja | Naranja con hoja | Icono de naranja con hoja |
+| Yuca | Yuca entera | Icono de raiz de yuca |
+| Maiz | Mazorca de maiz | Icono de mazorca con hojas |
+| Tomate | Tomate rojo | Icono de tomate |
+| Mango | Mango entero | Icono de mango verde |
+
+#### 9.3.4 Interaccion con puntos del mapa
 
 ```
-Header: código QR grande + datos del producto
-Timeline de trazabilidad: línea vertical con nodos
-Certificaciones: cards con icono + nombre + estado
-Evidencias: galería de imágenes
-Footer: información del productor (sin datos sensibles)
+Click en punto:
+  - Aparece popup/modal con informacion del lugar
+  - Informacion mostrada:
+    - Nombre de la finca o productor
+    - Ubicacion (municipio, vereda)
+    - Fotografia de referencia
+    - Productos disponibles
+    - Certificaciones (Fairtrade, Rainforest Alliance)
+    - Informacion de contacto (correo, telefono)
+    - Boton "Solicitar producto"
 ```
 
-### 9.5 Chatbot
+#### 9.3.5 Popup de informacion del punto
 
 ```
-Launcher: círculo 56px, Verde Agro, icono de chat
-Window: 400px width, 500px height, border-radius 16px
-Header: Verde Agro, título "AgroBot", botón cerrar
-Messages: bubbles, usuario alineado derecha, bot alineado izquierda
-Input: text input en footer, botón enviar
+Diseno:
+  - Width: 320px
+  - Background: Blanco (#FFFFFF)
+  - Border-radius: 12px
+  - Shadow: 0 4px 16px rgba(0,0,0,0.15)
+  
+Contenido:
+  - Imagen: 100% width, aspect ratio 16:9, border-radius top
+  - Nombre: text-lg, DM Sans bold, Gris 900
+  - Ubicacion: text-sm, Gris 500, icono de ubicacion
+  - Badges de certificacion: pequenos, al lado del nombre
+  - Lista de productos: chips/badges pequenos
+  - Informacion de contacto: icono + texto
+  - Boton "Solicitar producto": Primary button, full width
 ```
 
-### 9.6 Formularios de certificación
+#### 9.3.6 Boton "Solicitar producto"
 
 ```
-Pasos: stepper horizontal con números
-Form fields: labels encima de inputs
-Validación: inline errors en rojo debajo del campo
-Document upload: drag & drop zone con icono
-Resumen: card antes de confirmar
+Accion: Abre formulario de solicitud de compra o contacto directo
+Ubicacion: Dentro del popup del punto en el mapa
+Comportamiento:
+  - Si el usuario no esta autenticado: Redirige a login/registro
+  - Si el usuario esta autenticado: Abre modal con formulario de solicitud
+```
+
+#### 9.3.7 Filtros y controles del mapa
+
+```
+Capas:
+  - Toggle para mostrar/ocultar puntos por producto
+  - Toggle para mostrar/ocultar certificaciones
+  
+Controles:
+  - Zoom in/out
+  - Centrar en Magdalena
+  - Buscar mi ubicacion
+  
+Leyenda:
+  - Muestra todos los iconos de productos disponibles
+  - Indica cantidad de puntos por producto
+```
+
+### 9.4 Seccion Tienda
+
+La seccion tienda ofrece dos vistas complementarias para explorar productos: busqueda tradicional y busqueda por mapa.
+
+#### 9.4.1 Descripcion general
+
+```
+URL: /tienda o /store
+Tabs de navegacion:
+  - "Catalogo" - Lista tradicional de productos
+  - "Mapa" - Vista de mapa con puntos de productos
+```
+
+#### 9.4.2 Pestana Catalogo (Lista tradicional)
+
+```
+Layout:
+  - Sidebar izquierda: Filtros (250px)
+  - Contenido principal: Grid de productos
+
+Filtros disponibles:
+  - Tipo de producto (dropdown)
+  - Certificaciones (checkboxes)
+  - Rango de precio (slider)
+  - Ubicacion (dropdown municipio)
+  - Disponibilidad (toggle)
+
+Grid de productos:
+  - 4 columnas en desktop
+  - 2 columnas en tablet
+  - 1 columna en movil
+  - Cards con imagen, nombre, precio, ubicacion, certificaciones
+  - Hover: sombra elevada
+  - Click: navega a detalle del producto
+```
+
+#### 9.4.3 Pestana Mapa
+
+```
+Layout:
+  - Mapa interactivo ocupa toda la pantalla o area principal
+  - Barra de busqueda superpuesta en la parte superior
+  - Panel lateral izquierdo colapsable con filtros
+  - Leyenda de iconos en esquina inferior
+
+Funcionalidades:
+  - Misma experiencia descrita en seccion 9.3
+  - Click en punto abre popup con informacion
+  - Boton "Solicitar producto" en cada popup
+  - Filtros aplican tanto a puntos visibles como a resultados
+```
+
+#### 9.4.4 Card de producto en catalogo
+
+```
+Diseno:
+  - Background: Blanco (#FFFFFF)
+  - Border: 1px solid Gris 200 (#EEEEEE)
+  - Border-radius: 12px
+  - Overflow: hidden para imagen
+
+Contenido:
+  - Imagen: aspect ratio 4:3, object-fit cover
+  - Body (padding 16px):
+    - Nombre producto: text-lg, bold
+    - Precio: text-base, Verde Agro, bold
+    - Unidad: text-sm, Gris 500
+    - Ubicacion: text-sm, icono + texto
+    - Badges certificacion: row horizontal
+  - Footer: Boton "Ver detalle" o "Solicitar"
 ```
 
 ---
 
-## Assets necesarios
+## 10. Assets necesarios
 
 ### Imágenes
 
@@ -596,16 +766,35 @@ Resumen: card antes de confirmar
 - Ilustraciones para empty states
 - Imágenes de cultivos y productos (stock)
 - Foto de perfil placeholder
+- mascot Nebbi (ilustraciones en diferentes poses y tamanos)
 
 ### Iconos personalizados
 
 - Guineo/Plátano (producto insignia)
 - Logo mark para favicon
+- Iconos de productos agricolas para el mapa (guineo, banano, cafe, cacao, aguacate, naranja, yuca, maiz, tomate, mango)
+- Avatar de Nebbi para el chatbot
+
+### mascot Nebbi - Especificaciones de arte
+
+```
+Colores:
+  - Pelaje principal: Verde Agro (#2D8B4E)
+  - Manchas/patrones: Azul Profundo (#1565C0)
+  - Ojos/detalles: Amarillo dorado (#FFC107)
+  
+Variantes necesarias:
+  - Icono circular (para chatbot launcher): 56x56px
+  - Avatar para mensajes: 40x40px
+  - Ilustracion completa: 200x200px para empty states
+  - Mini badge: 24x24px para headers
+```
 
 ---
 
-## Historial de cambios
+## 11. Historial de cambios
 
 | Version | Fecha | Autor | Descripcion |
 | --- | --- | --- | --- |
 | 1.0.0 | 28/05/2026 | Equipo AgroTrace | Version inicial del diseño visual y frontend spec |
+| 1.1.0 | 28/05/2026 | Equipo AgroTrace | Agregada mascota Nebbi, mapa de productos y seccion tienda |
