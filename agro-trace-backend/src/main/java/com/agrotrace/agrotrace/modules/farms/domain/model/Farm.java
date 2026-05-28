@@ -5,8 +5,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -42,8 +40,4 @@ public class Farm extends AuditableEntity {
     @Column(nullable = false)
     @Builder.Default
     private String status = "ACTIVE";
-
-    @OneToMany(mappedBy = "farmId", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Builder.Default
-    private List<FarmPhoto> photos = new ArrayList<>();
 }
