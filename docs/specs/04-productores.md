@@ -4,7 +4,7 @@
 **Creado**: 27/05/2026  
 **Actualizado**: 27/05/2026  
 **Estado**: Borrador  
-**Autor**: Equipo AgroTrace  
+**Autor**: Equipo Nebbi  
 **Revisor**: Pendiente
 
 ---
@@ -26,7 +26,7 @@
 
 ## 1. Contexto y objetivo
 
-El productor es el actor central de AgroTrace Magdalena. La trazabilidad agricola empieza cuando un usuario con rol `PRODUCTOR` completa su perfil operativo y queda habilitado para registrar fincas, lotes, estados de cultivo, evidencias y certificaciones.
+El productor es el actor central de Nebbi. La trazabilidad agricola empieza cuando un usuario con rol `PRODUCTOR` completa su perfil operativo y queda habilitado para registrar fincas, lotes, estados de cultivo, evidencias y certificaciones.
 
 Esta feature define la gestion del perfil productor como entidad de dominio separada de la cuenta autenticable. El usuario pertenece al modulo de identidad; el productor contiene informacion agricola, documental y publica necesaria para operar trazabilidad.
 
@@ -576,4 +576,4 @@ Los siguientes puntos quedan excluidos de esta feature inicial y deben especific
 
 | Version | Fecha | Autor | Descripcion |
 | --- | --- | --- | --- |
-| 1.0.0 | 27/05/2026 | Equipo AgroTrace | Version inicial de la especificacion de productores. |
+| 1.0.0 | 27/05/2026 | Equipo Nebbi | Version inicial de la especificacion de productores. |

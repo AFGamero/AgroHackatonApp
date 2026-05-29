@@ -4,7 +4,7 @@
 **Creado**: 27/05/2026  
 **Actualizado**: 27/05/2026  
 **Estado**: Borrador  
-**Autor**: Equipo AgroTrace  
+**Autor**: Equipo Nebbi  
 **Revisor**: Pendiente
 
 ---
@@ -26,7 +26,7 @@
 
 ## 1. Contexto y objetivo
 
-Las certificaciones fortalecen la confianza comercial y turistica sobre los productos trazados en AgroTrace Magdalena. Un comprador internacional necesita verificar si una finca o lote cuenta con certificaciones como Fairtrade o Rainforest Alliance, y si estas se encuentran vigentes o pendientes de validacion.
+Las certificaciones fortalecen la confianza comercial y turistica sobre los productos trazados en Nebbi. Un comprador internacional necesita verificar si una finca o lote cuenta con certificaciones como Fairtrade o Rainforest Alliance, y si estas se encuentran vigentes o pendientes de validacion.
 
 Esta feature define el registro, consulta, validacion y exposicion publica de certificaciones asociadas a fincas o lotes. La certificacion puede ser cargada inicialmente por un productor y posteriormente validada por un certificador o administrador.
 
@@ -639,4 +639,4 @@ Los siguientes puntos quedan excluidos de esta feature inicial y deben especific
 
 | Version | Fecha | Autor | Descripcion |
 | --- | --- | --- | --- |
-| 1.0.0 | 27/05/2026 | Equipo AgroTrace | Version inicial de la especificacion de certificaciones. |
+| 1.0.0 | 27/05/2026 | Equipo Nebbi | Version inicial de la especificacion de certificaciones. |

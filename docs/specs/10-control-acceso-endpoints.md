@@ -4,7 +4,7 @@
 **Creado**: 28/05/2026  
 **Actualizado**: 28/05/2026  
 **Estado**: Borrador  
-**Autor**: Equipo AgroTrace  
+**Autor**: Equipo Nebbi  
 
 ---
 
@@ -22,7 +22,7 @@
 
 ## 1. Contexto y objetivo
 
-La plataforma AgroTrace Magdalena expone endpoints REST que deben diferenciarse según requieran o no autenticación. Esta spec define qué endpoints son públicos (accesibles sin token JWT) y cuáles requieren login y rol específico.
+La plataforma Nebbi expone endpoints REST que deben diferenciarse según requieran o no autenticación. Esta spec define qué endpoints son públicos (accesibles sin token JWT) y cuáles requieren login y rol específico.
 
 Las reglas aquí definidas se implementan en Spring Security mediante un `SecurityFilterChain`.
 
@@ -206,4 +206,4 @@ Endpoints de infraestructura que no requieren autenticación:
 
 | Version | Fecha | Autor | Descripcion |
 | --- | --- | --- | --- |
-| 1.0.0 | 28/05/2026 | Equipo AgroTrace | Version inicial. Matriz completa de endpoints públicos y privados. |
+| 1.0.0 | 28/05/2026 | Equipo Nebbi | Version inicial. Matriz completa de endpoints públicos y privados. |

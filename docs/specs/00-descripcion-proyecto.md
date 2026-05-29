@@ -1,8 +1,8 @@
-# AgroTrace Magdalena
+# Nebbi
 
 ## Descripcion del Proyecto
 
-AgroTrace Magdalena es una plataforma digital de trazabilidad agricola, turismo rural y comercializacion internacional enfocada en productores del departamento del Magdalena, Colombia.
+Nebbi es una plataforma digital de trazabilidad agricola, turismo rural y comercializacion internacional enfocada en productores del departamento del Magdalena, Colombia.
 
 El objetivo principal del proyecto es permitir que un producto agricola tenga un pasaporte digital verificable mediante codigo QR, conectando en una sola plataforma al productor, al turista y al comprador internacional.
 
@@ -12,7 +12,7 @@ La solucion permite registrar productores, fincas, lotes de cultivo, estados del
 
 Actualmente muchos productos agricolas exportados carecen de una trazabilidad clara y accesible para compradores, turistas y aliados comerciales. Esto reduce la confianza en el origen del producto, dificulta la validacion de certificaciones y limita la visibilidad de los pequenos productores.
 
-Ademas, existe una desconexion entre los productos agricolas del territorio y las experiencias turisticas asociadas a su origen. AgroTrace Magdalena busca unir estos dos mundos mediante una experiencia digital verificable, interactiva y orientada a la confianza.
+Ademas, existe una desconexion entre los productos agricolas del territorio y las experiencias turisticas asociadas a su origen. Nebbi busca unir estos dos mundos mediante una experiencia digital verificable, interactiva y orientada a la confianza.
 
 ## Propuesta de Valor
 
@@ -21,6 +21,7 @@ Ademas, existe una desconexion entre los productos agricolas del territorio y la
 - Los compradores internacionales pueden verificar trazabilidad, certificaciones y evidencias.
 - Los operadores turisticos pueden publicar experiencias rurales asociadas a fincas.
 - Los exportadores pueden recibir solicitudes de compra y gestionar procesos comerciales.
+- Todos los actores pueden visualizar en un mapa interactivo los productos de los agricultores y las ubicaciones fisicas exactas donde son producidos, con iconos distintivos por tipo de producto que al ser presionados muestran informacion detallada del producto, la finca y sus certificaciones.
 
 ## Objetivo Principal del MVP
 

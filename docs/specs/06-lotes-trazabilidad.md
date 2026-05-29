@@ -4,7 +4,7 @@
 **Creado**: 27/05/2026  
 **Actualizado**: 28/05/2026  
 **Estado**: Borrador  
-**Autor**: Equipo AgroTrace  
+**Autor**: Equipo Nebbi  
 **Revisor**: Pendiente
 
 ---
@@ -26,7 +26,7 @@
 
 ## 1. Contexto y objetivo
 
-El lote es la unidad productiva principal de AgroTrace Magdalena. Sobre un lote se registran el cultivo, variedad, fecha de siembra, estados de certificacion (Rainforest Alliance, Fairtrade, etc.), evidencias y certificaciones que luego alimentan el pasaporte digital verificable mediante QR.
+El lote es la unidad productiva principal de Nebbi. Sobre un lote se registran el cultivo, variedad, fecha de siembra, estados de certificacion (Rainforest Alliance, Fairtrade, etc.), evidencias y certificaciones que luego alimentan el pasaporte digital verificable mediante QR.
 
 Esta feature define la gestion backend de lotes y trazabilidad de certificaciones. La trazabilidad no debe depender solo de la certificacion actual: cada cambio de estado certificador debe quedar registrado como evento historico para permitir consulta publica, auditoria y confianza comercial.
 
@@ -777,5 +777,5 @@ Los siguientes puntos quedan excluidos de esta feature inicial y deben especific
 
 | Version | Fecha | Autor | Descripcion |
 | --- | --- | --- | --- |
-| 2.0.0 | 28/05/2026 | Equipo AgroTrace | Reemplazo de CropStatus por CertificationStatus: los estados del cultivo ahora representan certificaciones (Rainforest Alliance, Fairtrade, etc.) en lugar del ciclo agricola. Se agrego FK opcional a certifications. |
-| 1.0.0 | 27/05/2026 | Equipo AgroTrace | Version inicial de la especificacion de lotes y trazabilidad agricola. |
+| 2.0.0 | 28/05/2026 | Equipo Nebbi | Reemplazo de CropStatus por CertificationStatus: los estados del cultivo ahora representan certificaciones (Rainforest Alliance, Fairtrade, etc.) en lugar del ciclo agricola. Se agrego FK opcional a certifications. |
+| 1.0.0 | 27/05/2026 | Equipo Nebbi | Version inicial de la especificacion de lotes y trazabilidad agricola. |

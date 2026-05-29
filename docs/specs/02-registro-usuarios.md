@@ -4,7 +4,7 @@
 **Creado**: 27/05/2026  
 **Actualizado**: 27/05/2026  
 **Estado**: Borrador  
-**Autor**: Equipo AgroTrace  
+**Autor**: Equipo Nebbi  
 **Revisor**: Pendiente
 
 ---
@@ -26,7 +26,7 @@
 
 ## 1. Contexto y objetivo
 
-El registro de usuarios es la base de acceso para AgroTrace Magdalena. Sin usuarios autenticados no es posible administrar productores, fincas, lotes, certificaciones, experiencias turisticas ni solicitudes comerciales con trazabilidad de autoria.
+El registro de usuarios es la base de acceso para Nebbi. Sin usuarios autenticados no es posible administrar productores, fincas, lotes, certificaciones, experiencias turisticas ni solicitudes comerciales con trazabilidad de autoria.
 
 Esta feature habilita el registro inicial de usuarios, la verificacion de correo electronico, el inicio de sesion y la creacion del perfil operativo segun el tipo de actor dentro del sistema.
 
@@ -149,7 +149,7 @@ User (1) ---- (N) AuditLog
 
 **Como** visitante,  
 **quiero** crear una cuenta con correo, contrasena y tipo de actor,  
-**para que** pueda acceder a AgroTrace y completar mi perfil operativo.
+**para que** pueda acceder a Nebbi y completar mi perfil operativo.
 
 **Por que P1**: Sin cuenta de usuario no existe autoria ni permisos para operar trazabilidad agricola.
 
@@ -616,4 +616,4 @@ Los siguientes puntos quedan excluidos de esta feature inicial y deben especific
 
 | Version | Fecha | Autor | Descripcion |
 | --- | --- | --- | --- |
-| 1.0.0 | 27/05/2026 | Equipo AgroTrace | Version inicial de la especificacion de registro de usuarios. |
+| 1.0.0 | 27/05/2026 | Equipo Nebbi | Version inicial de la especificacion de registro de usuarios. |

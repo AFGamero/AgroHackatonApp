@@ -4,7 +4,7 @@
 **Creado**: 27/05/2026  
 **Actualizado**: 27/05/2026  
 **Estado**: Borrador  
-**Autor**: Equipo AgroTrace  
+**Autor**: Equipo Nebbi  
 **Revisor**: Pendiente
 
 ---

@@ -2,7 +2,7 @@
 
 ## Contexto
 
-Este documento define los casos de uso iniciales para el backend de AgroTrace Magdalena. La prioridad es construir el MVP necesario para registrar trazabilidad agricola por lote, generar un pasaporte digital publico mediante QR, publicar experiencias turisticas y recibir solicitudes de compra internacional.
+Este documento define los casos de uso iniciales para el backend de Nebbi. La prioridad es construir el MVP necesario para registrar trazabilidad agricola por lote, generar un pasaporte digital publico mediante QR, publicar experiencias turisticas y recibir solicitudes de compra internacional.
 
 ## Convenciones
 

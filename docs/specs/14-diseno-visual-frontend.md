@@ -4,7 +4,7 @@
 **Creado**: 28/05/2026
 **Actualizado**: 28/05/2026
 **Estado**: Borrador
-**Autor**: Equipo AgroTrace
+**Autor**: Equipo Nebbi
 **Revisor**: Pendiente
 
 ---
@@ -29,7 +29,7 @@
 
 ### 1.1 Nombre de la aplicación
 
-El nombre oficial de la plataforma es **AgroTrace Magdalena** según documentado en `00-descripcion-proyecto.md`. Este nombre esta sujeto a confirmacion final por parte del equipo.
+El nombre oficial de la plataforma es **Nebbi** según documentado en `00-descripcion-proyecto.md`. Este nombre esta sujeto a confirmacion final por parte del equipo.
 
 ### 1.2 Producto representativo
 
@@ -544,7 +544,7 @@ Imagen hero: foto de campo o producto (guineo)
 
 #### 9.2.1 Identidad de Nebbi
 
-Nebbi es la mascota oficial de AgroTrace Magdalena, representada como un jaguar verde con azul en honor a las tierras y el mar de la costa colombiana.
+Nebbi es la mascota y el nombre oficial de la plataforma, representada como un jaguar verde con azul en honor a las tierras y el mar de la costa colombiana.
 
 | Atributo | Descripcion |
 | --- | --- |
@@ -796,5 +796,5 @@ Variantes necesarias:
 
 | Version | Fecha | Autor | Descripcion |
 | --- | --- | --- | --- |
-| 1.0.0 | 28/05/2026 | Equipo AgroTrace | Version inicial del diseño visual y frontend spec |
-| 1.1.0 | 28/05/2026 | Equipo AgroTrace | Agregada mascota Nebbi, mapa de productos y seccion tienda |
+| 1.0.0 | 28/05/2026 | Equipo Nebbi | Version inicial del diseño visual y frontend spec |
+| 1.1.0 | 28/05/2026 | Equipo Nebbi | Agregada mascota Nebbi, mapa de productos y seccion tienda |

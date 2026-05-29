@@ -4,7 +4,7 @@
 **Creado**: 27/05/2026  
 **Actualizado**: 27/05/2026  
 **Estado**: Borrador  
-**Autor**: Equipo AgroTrace  
+**Autor**: Equipo Nebbi  
 **Revisor**: Pendiente
 
 ---
@@ -26,7 +26,7 @@
 
 ## 1. Contexto y objetivo
 
-La autenticacion y gestion de sesiones protege los recursos privados de AgroTrace Magdalena. Esta feature define como un usuario activo obtiene tokens, renueva su sesion, cierra sesion y accede a endpoints protegidos segun su rol.
+La autenticacion y gestion de sesiones protege los recursos privados de Nebbi. Esta feature define como un usuario activo obtiene tokens, renueva su sesion, cierra sesion y accede a endpoints protegidos segun su rol.
 
 El objetivo del MVP es implementar un esquema seguro y simple basado en `access_token` JWT de corta duracion y `refresh_token` persistido como hash, con capacidad de revocacion cuando el usuario cierra sesion, cambia de estado o se detecta uso invalido.
 
@@ -112,7 +112,7 @@ Session (1) ---- (N) AuditLog
 
 **Como** usuario activo,  
 **quiero** iniciar sesion con correo y contrasena,  
-**para que** pueda acceder a funcionalidades privadas de AgroTrace.
+**para que** pueda acceder a funcionalidades privadas de Nebbi.
 
 **Por que P1**: Sin login no es posible proteger endpoints ni asociar acciones a usuarios.
 
@@ -572,4 +572,4 @@ Los siguientes puntos quedan excluidos de esta feature inicial y deben especific
 
 | Version | Fecha | Autor | Descripcion |
 | --- | --- | --- | --- |
-| 1.0.0 | 27/05/2026 | Equipo AgroTrace | Version inicial de la especificacion de autenticacion y sesiones. |
+| 1.0.0 | 27/05/2026 | Equipo Nebbi | Version inicial de la especificacion de autenticacion y sesiones. |

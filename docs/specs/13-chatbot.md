@@ -1,10 +1,10 @@
-# Feature Specification: Chatbot de Asistencia
+# Feature Specification: Chatbot de Guia para Certificaciones Fairtrade y Rainforest Alliance
 
 **Version**: 1.0.0  
 **Creado**: 28/05/2026  
 **Actualizado**: 28/05/2026  
 **Estado**: Borrador  
-**Autor**: Equipo AgroTrace  
+**Autor**: Equipo Nebbi  
 **Revisor**: Pendiente
 
 ---
@@ -13,9 +13,9 @@
 
 1. [Contexto y objetivo](#1-contexto-y-objetivo)
 2. [Actores](#2-actores)
-3. [Funcionalidades principales](#3-funcionalidades-principales)
-4. [Guias por actor](#4-guias-por-actor)
-5. [Conocimiento de certificaciones](#5-conocimiento-de-certificaciones)
+3. [Funcionalidad principal: Guia de certificacion](#3-funcionalidad-principal-guia-de-certificacion)
+4. [Conocimiento de certificaciones](#4-conocimiento-de-certificaciones)
+5. [Guias por actor](#5-guias-por-actor)
 6. [Diseño de conversacion](#6-diseño-de-conversacion)
 7. [Arquitectura tecnica](#7-arquitectura-tecnica)
 8. [Modelos y prompt engineering](#8-modelos-y-prompt-engineering)
@@ -28,11 +28,11 @@
 
 ## 1. Contexto y objetivo
 
-AgroTrace Magdalena es una plataforma con multiples actores y funcionalidades: productores que registran fincas y lotes, exportadores que gestionan compras internacionales, turistas que escanean codigos QR, y certificadores que validan origenes. La navegacion y comprension de todas estas capacidades puede resultar compleja para usuarios nuevos.
+Nebbi es una plataforma que conecta productores agricolas con mercados internacionales, turistas y compradores a traves de un sistema de trazabilidad verificado por QR. El nucleo de la propuesta de valor de Nebbi gira en torno a las certificaciones Fairtrade y Rainforest Alliance, las cuales garantizan la calidad, sostenibilidad y origen de los productos.
 
-Esta feature define un chatbot inteligente integrado en la aplicacion web que funciona como guia conversacional para todos los actores de la plataforma. El objetivo es reducir la curva de aprendizaje, responder preguntas frecuentes, guiar procesos y facilitar la interaccion con la plataforma sin necesidad de consultar documentacion externa.
+Esta feature define un chatbot inteligente cuyo enfoque principal es servir como guia experta para el proceso de certificacion Fairtrade y Rainforest Alliance. El chatbot orienta a los productores en cada etapa del camino hacia la certificacion: desde entender los requisitos y beneficios, pasando por la preparacion de la documentacion, hasta el registro y validacion en la plataforma. Tambien asiste a compradores y turistas que desean entender el valor de las certificaciones y como verificarlas en el pasaporte digital.
 
-El chatbot no reemplaza atencion humana ni ejecuta transacciones en nombre del usuario. Actua como orientador contextual que interpreta la pregunta y dirige al usuario hacia la funcionalidad adecuada o explica conceptos relevantes sobre certificaciones, trazabilidad y la cadena de valor.
+Como funcionalidad complementaria, el chatbot ofrece orientacion general sobre navegacion de la plataforma y resolucion de dudas frecuentes. Sin embargo, su prioridad y especializacion es el conocimiento certificador.
 
 ---
 
@@ -40,139 +40,129 @@ El chatbot no reemplaza atencion humana ni ejecuta transacciones en nombre del u
 
 | ID | Actor | Rol en el chatbot |
 | --- | --- | --- |
-| ACT-01 | Productor | Recibe guias sobre registro de finca, lote, estado de cultivo, evidencias, certificaciones y como contactarse con exportadores. |
-| ACT-02 | Exportador | Recibe guias sobre comunicacion con productores, origen de productos, adquisicion de productos y conexion con otros agentes. |
-| ACT-03 | Operador Turistico | Recibe guias sobre publicacion de experiencias turisticas y promocion de fincas. |
-| ACT-04 | Comprador Internacional | Recibe guias sobre consulta de trazabilidad, envio de solicitudes de compra y seguimiento logistico. |
-| ACT-05 | Turista | Recibe guias sobre escaneo de QR, consulta de pasaporte digital y exploracion de experiencias. |
-| ACT-06 | Certificador | Recibe guias sobre proceso de validacion de certificaciones y revision de evidencias. |
-| ACT-07 | Administrador | Recibe guias sobre supervision de usuarios, contenido y operacion general del sistema. |
+| ACT-01 | Productor | Recibe guia experta sobre el proceso completo de certificacion Fairtrade y Rainforest Alliance: requisitos, beneficios, preparacion de documentacion, registro en la plataforma y seguimiento del estado de validacion. Tambien orientacion complementaria sobre registro de finca, lote y evidencias. |
+| ACT-02 | Exportador | Recibe guia sobre como verificar la validez de las certificaciones en los pasaportes digitales, interpretar los estados de certificacion y como comunicarse con productores certificados. |
+| ACT-03 | Operador Turistico | Recibe guia basica sobre publicacion de experiencias turisticas y como las certificaciones agregan valor a las fincas que ofrecen turismo. |
+| ACT-04 | Comprador Internacional | Recibe guia sobre como verificar certificaciones Fairtrade y Rainforest Alliance en el pasaporte digital, entender los estados de certificacion y la trazabilidad del producto. |
+| ACT-05 | Turista | Recibe guia basica sobre escaneo de QR, consulta de pasaporte digital y como interpretar la informacion de certificaciones que aparece. |
+| ACT-06 | Certificador | Recibe guia detallada sobre el proceso de validacion de certificaciones: criterios de aprobacion, revision de documentos y evidencias, y gestion de estados. |
+| ACT-07 | Administrador | Recibe guia sobre supervision de certificaciones, usuarios y operacion general del sistema. |
 
 ---
 
-## 3. Funcionalidades principales
+## 3. Funcionalidad principal: Guia de certificacion
 
-### 3.1 Guia contextual de navegacion
+El chatbot de Nebbi esta diseñado para acompanar a los productores en cada etapa del proceso de certificacion Fairtrade y Rainforest Alliance. Esta es su funcionalidad primaria y la razon de su existencia.
 
-El chatbot responde preguntas sobre como llegar a una funcionalidad especifica dentro de la plataforma. Cada respuesta incluye un direcionamineto claro hacia la seccion o accion correspondiente.
+### 3.1 Etapas de la guia de certificacion
 
-**Ejemplos de preguntas:**
+El chatbot cubre el ciclo completo de certificacion en cinco etapas:
 
-- Donde puedo registrar mi finca?
-- Como creo un lote para mi cultivo?
-- Donde subo las fotos de mi cosecha?
-- Como puedo ver las solicitudes de compra que me han llegado?
+| Etapa | Descripcion | Preguntas tipicas |
+| --- | --- | --- |
+| 1. Descubrimiento | Explica que son las certificaciones, sus beneficios y diferencias. Ayuda al productor a decidir cual le conviene. | Que es Fairtrade? Que beneficios tiene Rainforest Alliance? Cual me conviene segun mi cultivo? |
+| 2. Requisitos | Detalla los criterios que debe cumplir la finca o lote para cada certificacion. | Que documentos necesito? Como preparo mi finca para la auditoria? Que criterios laborales debo cumplir? |
+| 3. Preparacion | Orienta al productor sobre como preparar la documentacion, contactar entidades certificadoras y preparar la finca para evaluacion. | Donde encuentro una entidad certificadora acreditada? Como organizo mis evidencias? |
+| 4. Registro en Nebbi | Guia paso a paso para registrar la certificacion en la plataforma: seccion, campos, carga de documentos y asociacion a finca o lote. | Donde subo mi certificado Fairtrade? Como asocio la certificacion a mi lote? Que formato debe tener el documento? |
+| 5. Seguimiento y renovacion | Explica los estados de validacion, que significan, como resolver rechazos y cuando renovar certificaciones vencidas. | Por que mi certificacion aparece como PENDIENTE_VALIDACION? Que hago si fue RECHAZADA? Cuando debo renovar? |
 
-### 3.2 Guia de procesos
+### 3.2 Guia para compradores y exportadores
 
-El chatbot explica los pasos necesarios para completar procesos dentro de la plataforma. Las explicaciones son concisas y orientadas a la accion.
+El chatbot tambien asiste a compradores internacionales y exportadores en la verificacion de certificaciones:
 
-**Ejemplos:**
+- **Verificar validez**: Explica como confirmar que una certificacion Fairtrade o Rainforest Alliance mostrada en el pasaporte digital es autentica y vigente.
+- **Interpretar estados**: Describe el significado de cada estado de certificacion y cuales garantizan confiabilidad.
+- **Buscar productos certificados**: Orienta sobre como filtrar productos en la plataforma por tipo de certificacion.
 
-- Como registro una certificacion Fairtrade?
-- Que debo hacer para que mi producto aparezca en el catalogo?
-- Como funciona el proceso de validacion de una certificacion?
+### 3.3 Guia complementaria de plataforma
 
-### 3.3 Informacion sobre certificaciones
+De forma secundaria, el chatbot ofrece orientacion general sobre navegacion de la plataforma y procesos operativos. Esta funcionalidad cubre:
 
-El chatbot tiene conocimiento profundo sobre Fairtrade y Rainforest Alliance, incluyendo criterios, beneficios, proceso de obtencion y como se reflejan en el pasaporte digital.
-
-**Ejemplos:**
-
-- Que es la certificacion Fairtrade y que beneficios me da?
-- Como obtener Rainforest Alliance para mi finca?
-- Cuanto tiempo dura el proceso de validacion de una certificacion?
-- Que datos aparecen en el pasaporte digital sobre mis certificaciones?
-
-### 3.4 Guia de comunicacion entre actores
-
-El chatbot facilita la conexion entre actores de la cadena de valor. Orienta sobre como producers y exportadores pueden comunicarse.
-
-**Ejemplos:**
-
-- Como puede contactarme un exportador conmigo?
-- Donde veo los mensajes o solicitudes de compradores internacionales?
-- Como puedo ofrecer mis productos a exportadores?
-
-### 3.5 Soporte para errores comunes
-
-El chatbot detecta errores frecuentes y orienta al usuario sobre como corregirlos. No ejecuta correcciones automaticas sino que guia verbalmente.
+- Registro de fincas, lotes y evidencias.
+- Publicacion de productos y experiencias turisticas.
+- Solicitudes de compra y comunicacion entre actores.
+- Escaneo de QR y consulta de pasaporte digital.
 
 ---
 
-## 4. Guias por actor
+## 5. Guias por actor
 
-### 4.1 Productor
+A continuacion se detallan los escenarios que cubre el chatbot para cada actor, con enfasis en certificaciones.
 
-| Escenario | Que resuelve el chatbot |
-| --- | --- |
-| Registro de finca | Explica que debe ir a la seccion Mis Fincas, seleccionar Nueva Finca y completar los campos de nombre, ubicacion, coordenadas y descripcion. |
-| Registro de lote | Explica que desde la finca debe seleccionar Crear Lote, ingresar codigo, nombre, area, cultivo, variedad y fecha de siembra. |
-| Actualizar estado de cultivo | Explica que debe seleccionar el lote, ir a Estados de Cultivo, registrar el nuevo estado con observaciones y fecha del evento. |
-| Adjuntar evidencias | Explica que desde el lote debe ir a Evidencias, seleccionar el tipo, adjuntar archivo o comentario y guardar. |
-| Registrar certificacion | Explica el proceso de certificacion, diferencia entre Fairtrade y Rainforest Alliance, y que documentos necesita. |
-| Publicar producto | Explica como asociar un lote a un producto comercializable, definir precio, cantidad y unidad de medida. |
-| Contactar exportadores | Explica que sus productos publicados aparecen en el catalogo de exportadores y que estos pueden enviarle solicitudes de compra. |
-| Consultar solicitudes | Explica donde ver las solicitudes de compra recibidas y como responder a cada una. |
-
-### 4.2 Exportador
+### 5.1 Productor
 
 | Escenario | Que resuelve el chatbot |
 | --- | --- |
+| Entender certificaciones | Explica que son Fairtrade y Rainforest Alliance, sus diferencias, beneficios y cual conviene segun el cultivo y mercado objetivo. |
+| Conocer requisitos | Detalla los criterios especificos que debe cumplir la finca o lote para cada certificacion, incluyendo aspectos laborales, ambientales y organizativos. |
+| Preparar documentacion | Orienta sobre los documentos necesarios, como contactar entidades certificadoras acreditadas y como preparar la finca para la auditoria. |
+| Registrar certificacion en Nebbi | Explica el paso a paso: ir a Certificaciones en la finca o lote, seleccionar tipo (Fairtrade o Rainforest Alliance), cargar documento soporte y asociar. |
+| Entender estados de validacion | Explica que significa cada estado (PENDIENTE_VALIDACION, VALIDADA, RECHAZADA, VENCIDA, REVOCADA) y que acciones tomar en cada caso. |
+| Resolver rechazo | Explica por que una certificacion puede ser rechazada, como corregir los problemas y como volver a enviarla a validacion. |
+| Renovar certificacion | Orienta sobre fechas de vencimiento, proceso de renovacion y como mantener la certificacion vigente. |
+| Registro de finca y lote | Explica como registrar fincas y lotes en la plataforma. |
+| Evidencias y cultivos | Explica como adjuntar evidencias y actualizar estados de cultivo. |
+| Publicar producto | Explica como asociar un lote a un producto comercializable y definir precio. |
+
+### 5.2 Exportador
+
+| Escenario | Que resuelve el chatbot |
+| --- | --- |
+| Verificar certificaciones | Explica como confirmar la autenticidad y vigencia de certificaciones Fairtrade y Rainforest Alliance en los pasaportes digitales. |
+| Filtrar productos certificados | Explica como buscar y filtrar productos en el catalogo por tipo de certificacion. |
+| Entender estados | Explica el significado de cada estado de certificacion y cuales son confiables para hacer negocios. |
 | Buscar productores | Explica como explorar el catalogo de productos por ubicacion, certificacion o cultivo. |
-| Consultar origen de productos | Explica como escanear el QR de un producto o buscar por codigo de lote para ver trazabilidad completa. |
-| Adquirir productos | Explica el flujo de enviar solicitud de compra, que datos debe ingresar y que esperar como respuesta. |
-| Conectarse con agentes | Explica como funcionan las solicitudes de compra y la comunicacion con productores a traves de la plataforma. |
-| Ver certificaciones | Explica como las certificaciones Fairtrade y Rainforest Alliance aparecen en el pasaporte digital y como verificarlas. |
-| Gestionar solicitudes | Explica como revisar solicitudes recibidas, cambiar su estado y negociar con el productor. |
+| Consultar trazabilidad | Explica como escanear el QR de un producto para ver trazabilidad completa. |
 
-### 4.3 Operador Turistico
+### 5.3 Operador Turistico
 
 | Escenario | Que resuelve el chatbot |
 | --- | --- |
-| Publicar experiencia | Explica como crear una experiencia turistica desde la seccion de Turismo, ingresando nombre, descripcion, duracion, precio y fotografias. |
-| Asociar experiencia a finca | Explica como vincular la experiencia turistica a una finca existente en la plataforma. |
-| Gestionar disponibilidad | Explica como actualizar la disponibilidad y capacidad de las experiencias publicadas. |
+| Publicar experiencia | Explica como crear una experiencia turistica desde la seccion de Turismo. |
+| Asociar experiencia a finca | Explica como vincular la experiencia turistica a una finca existente. |
+| Valor de certificaciones | Explica como las certificaciones Fairtrade y Rainforest Alliance agregan valor a las experiencias turisticas ofrecidas. |
 
-### 4.4 Comprador Internacional
-
-| Escenario | Que resuelve el chatbot |
-| --- | --- |
-| Consultar trazabilidad | Explica como escanear un QR o ingresar un codigo de pasaporte para ver la trazabilidad completa del producto. |
-| Enviar solicitud de compra | Explica el formulario de solicitud, que datos son obligatorios y que sucede al enviarla. |
-| Seguimiento logistico | Explica como consultar el estado de envio de una exportacion en la seccion de seguimiento. |
-
-### 4.5 Turista
+### 5.4 Comprador Internacional
 
 | Escenario | Que resuelve el chatbot |
 | --- | --- |
-| Escanear QR | Explica como usar la camara del telefono para escanear el codigo QR y abrir el pasaporte digital. |
-| Consultar pasaporte | Explica que information aparecera en el pasaporte, incluyendo datos del productor, finca, cultivo y certificaciones. |
+| Verificar certificaciones | Explica como verificar la autenticidad de las certificaciones Fairtrade y Rainforest Alliance en el pasaporte digital del producto. |
+| Interpretar pasaporte | Explica como leer la informacion del pasaporte digital: datos del productor, finca, certificaciones vigentes y evidencias. |
+| Consultar trazabilidad | Explica como escanear un QR o ingresar un codigo de pasaporte para ver la trazabilidad completa. |
+| Enviar solicitud de compra | Explica el formulario de solicitud, datos obligatorios y el flujo posterior. |
+
+### 5.5 Turista
+
+| Escenario | Que resuelve el chatbot |
+| --- | --- |
+| Escanear QR | Explica como usar la camara para escanear el codigo QR y abrir el pasaporte digital. |
+| Consultar pasaporte | Explica la informacion que aparece en el pasaporte, incluyendo certificaciones Fairtrade y Rainforest Alliance. |
 | Explorar experiencias | Explica como navegar el catalogo de experiencias turisticas disponibles. |
 
-### 4.6 Certificador
+### 5.6 Certificador
 
 | Escenario | Que resuelve el chatbot |
 | --- | --- |
-| Revisar certificaciones pendientes | Explica donde encontrar las certificaciones que requieren validacion. |
-| Validar certificacion | Explica los criterios que debe revisar y como aprobar o rechazar una certificacion. |
+| Revisar certificaciones pendientes | Explica donde encontrar las certificaciones que requieren validacion y como filtrarlas. |
+| Criterios de validacion | Detalla los criterios especificos que debe verificar para Fairtrade y para Rainforest Alliance. |
+| Aprobar o rechazar | Explica el proceso de aprobacion o rechazo, como documentar la decision y notificar al productor. |
 | Consultar evidencias | Explica como acceder a las evidencias fotograficas y documentales asociadas a cada certificacion. |
 
-### 4.7 Administrador
+### 5.7 Administrador
 
 | Escenario | Que resuelve el chatbot |
 | --- | --- |
-| Supervisar usuarios | Explica como acceder al panel de administracion y gestionar usuarios del sistema. |
+| Supervisar certificaciones | Explica como acceder al panel de administracion y revisar el estado de todas las certificaciones. |
+| Supervisar usuarios | Explica como gestionar usuarios y sus roles en la plataforma. |
 | Revisar contenido | Explica como aprobar o rechazar contenido publicado por los diferentes actores. |
-| Supervisar operaciones | Explica como consultar metricas y estados generales de la plataforma. |
 
 ---
 
-## 5. Conocimiento de certificaciones
+## 4. Conocimiento de certificaciones
 
 El chatbot debe tener conocimiento profundo sobre las siguientes certificaciones, segun la informacion detallada en `07-certificaciones.md`.
 
-### 5.1 Fairtrade
+### 4.1 Fairtrade
 
 **Descripcion general:**
 Fairtrade es un sistema de certificacion que garantiza que los productos han sido producidos bajo estandares que protegen a los trabajadores y productores en paises en desarrollo. Se enfoca en condiciones comerciales justas, salarios dignos, organizacion comunitaria y sostenibilidad ambiental.
@@ -199,10 +189,10 @@ Fairtrade es un sistema de certificacion que garantiza que los productos han sid
 4. Se realizan auditorias anuales de vigilancia.
 5. La certificacion tiene validez anual y debe renovarse.
 
-**En AgroTrace:**
+**En Nebbi:**
 El productor puede registrar su certificacion Fairtrade desde la seccion de Certificaciones de su finca o lote, cargando el documento soporte que evidencia la certificacion otorgada por la entidad certificadora.
 
-### 5.2 Rainforest Alliance
+### 4.2 Rainforest Alliance
 
 **Descripcion general:**
 Rainforest Alliance es una certificacion que verifica que los productos han sido producidos bajo estandares de sostenibilidad ambiental, proteccion de la biodiversidad y responsabilidad social. Se enfoca en la conservacion de ecosistemas, manejo integrado de plagas, conservacion de recursos hidricos y condiciones de trabajo justas.
@@ -231,10 +221,10 @@ Rainforest Alliance es una certificacion que verifica que los productos han sido
 5. Se emiten informes de seguimiento anuales.
 6. La certificacion tiene vigencia variable segun el alcance.
 
-**En AgroTrace:**
+**En Nebbi:**
 El productor puede registrar su certificacion Rainforest Alliance desde la seccion de Certificaciones de su finca o lote, cargando el documento oficial emitido por la entidad certificadora acreditada.
 
-### 5.3 Informacion compartida por el chatbot sobre certificaciones
+### 4.1 Informacion compartida por el chatbot sobre certificaciones
 
 El chatbot debe poder explicar:
 
@@ -246,7 +236,7 @@ El chatbot debe poder explicar:
 - Que aparece en el pasaporte digital del producto respecto a certificaciones.
 - Como verificar la vigencia de una certificacion a traves de la plataforma.
 
-### 5.4 Estados de certificacion y significado
+### 4.2 Estados de certificacion y significado
 
 | Estado | Significado | Visible en pasaporte |
 | --- | --- | --- |
@@ -356,14 +346,14 @@ Para el prototipo se usara `mistralai/mistral-7b-instruct` por su balance entre 
 
 ### 8.3 Estructura del prompt
 
-El prompt del sistema se estructura en tres secciones:
+El prompt del sistema se estructura en cuatro secciones, con enfasis en el conocimiento certificador:
 
 **Seccion 1: Identidad y rol**
 
 ```
-Eres AgroBot, el asistente virtual de AgroTrace Magdalena.
-Tu objetivo es guiar a los usuarios de la plataforma para que puedan navegar,
-entender funcionalidades y resolver dudas sobre certificaciones y procesos.
+Eres NebbiBot, el asistente virtual de Nebbi especializado en certificaciones Fairtrade y Rainforest Alliance.
+Tu objetivo principal es guiar a los productores en el proceso de certificacion: desde entender que son, sus beneficios y requisitos, hasta como registrar y dar seguimiento a la certificacion en la plataforma.
+Tambien puedes orientar sobre navegacion general de la plataforma y resolver dudas frecuentes, pero tu especialidad y prioridad es el conocimiento certificador.
 ```
 
 **Seccion 2: Reglas de conversacion**
@@ -412,7 +402,7 @@ El prompt incluyara los ultimos 5 mensajes de la conversacion para mantener cont
 ```
 Historial de conversacion:
 Usuario: [mensaje anterior]
-AgroBot: [respuesta anterior]
+NebbiBot: [respuesta anterior]
 Usuario: [mensaje actual]
 ```
 
@@ -458,12 +448,14 @@ Usuario: [mensaje actual]
 
 | ID | Criterio | Forma de medicion |
 | --- | --- | --- |
-| SC-001 | Un productor puede preguntar como registrar una finca y recibir instrucciones claras. | Test del chatbot con pregunta sobre registro de finca. |
-| SC-002 | Un exportador puede preguntar sobre certificaciones Fairtrade y recibir una explicacion precisa. | Test del chatbot con pregunta sobre Fairtrade. |
-| SC-003 | Un turista puede preguntar que es un pasaporte digital y recibir una explicacion comprensible. | Test del chatbot con pregunta sobre pasaporte. |
-| SC-004 | Las respuestas del chatbot se muestran en menos de 5 segundos. | Medicion de tiempo de respuesta en entorno de prueba. |
-| SC-005 | El chatbot responde de forma empática y orientado a la accion. | Revision manual de respuestas. |
-| SC-006 | Si el chatbot no puede responder, ofrece escalar a atencion humana. | Test de scenarios fuera de conocimiento. |
+| SC-001 | Un productor puede preguntar como iniciar el proceso de certificacion Fairtrade y recibir una guia completa con los pasos, requisitos y beneficios. | Test del chatbot con pregunta sobre proceso Fairtrade. |
+| SC-002 | Un productor puede preguntar sobre las diferencias entre Fairtrade y Rainforest Alliance y recibir una explicacion clara que le ayude a decidir. | Test del chatbot con pregunta comparativa. |
+| SC-003 | Un productor puede preguntar por que su certificacion fue rechazada y recibir orientacion sobre como corregir el problema. | Test del chatbot con pregunta sobre estado RECHAZADA. |
+| SC-004 | Un comprador internacional puede preguntar como verificar la autenticidad de una certificacion en el pasaporte digital y recibir instrucciones precisas. | Test del chatbot con pregunta sobre verificacion. |
+| SC-005 | Un certificador puede preguntar sobre los criterios de validacion de Rainforest Alliance y recibir una lista detallada. | Test del chatbot con pregunta sobre criterios de validacion. |
+| SC-006 | Las respuestas del chatbot sobre certificaciones se muestran en menos de 5 segundos. | Medicion de tiempo de respuesta en entorno de prueba. |
+| SC-007 | El chatbot responde de forma empática y orientada a la accion, guiando al usuario hacia el siguiente paso del proceso certificador. | Revision manual de respuestas. |
+| SC-008 | Si el chatbot no puede responder una pregunta sobre certificaciones, ofrece escalar a atencion humana. | Test de scenarios fuera de conocimiento. |
 
 ---
 
@@ -471,7 +463,7 @@ Usuario: [mensaje actual]
 
 ### 11.1 Objetivo del prototipo
 
-Demonstrar la viabilidad del chatbot integrado en la aplicacion web usando un modelo gratuito de OpenRouter. El prototipo permitira conversaciones basicas con los flujos de guiado definidos.
+Demonstrar la viabilidad del chatbot como guia experta en certificaciones Fairtrade y Rainforest Alliance, integrado en la aplicacion web usando un modelo gratuito de OpenRouter. El prototipo priorizara el conocimiento certificador y las conversaciones relacionadas con el proceso de certificacion.
 
 ### 11.2 Funcionalidades del prototipo
 
@@ -479,10 +471,11 @@ Demonstrar la viabilidad del chatbot integrado en la aplicacion web usando un mo
 | --- | --- |
 | Ventana de chat flotante | Icono en esquina inferior derecha que despliega conversacion. |
 | Entrada de texto libre | El usuario puede escribir cualquier pregunta. |
-| Respuestas predefinidas | Botones de opcion rapida para guiada inicial: Productor, Exportador, Turista, otro. |
+| Guia de certificacion | El chatbot prioriza preguntas sobre el proceso de certificacion Fairtrade y Rainforest Alliance. |
+| Conocimiento certificador | El prompt incluye informacion exhaustiva sobre ambas certificaciones, sus criterios, beneficios, requisitos y estados. |
 | Respuesta del modelo | Respuestas generadas por mistral-7b-instruct via OpenRouter. |
 | Historial de conversacion | Se muestran los mensajes previos en la misma sesion. |
-| knowledge de certificaciones | El prompt incluye informacion sobre Fairtrade y Rainforest Alliance. |
+| Orientacion complementaria | El chatbot tambien puede orientar sobre navegacion general de la plataforma. |
 
 ### 11.3 Componentes a implementar
 
@@ -516,7 +509,7 @@ Si OpenRouter no responde o el modelo falla, el chatbot retornara:
 
 ```
 Estoy teniendo dificultades para responderte en este momento.
-Por favor intenta mas tarde o contacta a soporte@agrotrace.co para asistencia directa.
+Por favor intenta mas tarde o contacta a soporte@nebbi.co para asistencia directa.
 ```
 
 ---
@@ -533,7 +526,7 @@ Los siguientes puntos quedan excluidos del prototipo inicial y deben especificar
 - Recomendaciones personalizadas basadas en comportamiento del usuario.
 - Notificaciones proactivas del chatbot hacia el usuario.
 - Integracion con sistemas de CRM o helpdesk externos.
-- Capacitacion de modelos personalizados con datos de AgroTrace.
+- Capacitacion de modelos personalizados con datos de Nebbi.
 - Resolucion automatica de casos de soporte.
 
 ---
@@ -542,4 +535,4 @@ Los siguientes puntos quedan excluidos del prototipo inicial y deben especificar
 
 | Version | Fecha | Autor | Descripcion |
 | --- | --- | --- | --- |
-| 1.0.0 | 28/05/2026 | Equipo AgroTrace | Version inicial de la especificacion del chatbot. |
+| 1.0.0 | 28/05/2026 | Equipo Nebbi | Version inicial de la especificacion del chatbot. |

@@ -4,7 +4,7 @@
 **Creado**: 27/05/2026  
 **Actualizado**: 27/05/2026  
 **Estado**: Borrador  
-**Autor**: Equipo AgroTrace  
+**Autor**: Equipo Nebbi  
 **Revisor**: Pendiente
 
 ---
@@ -26,9 +26,9 @@
 
 ## 1. Contexto y objetivo
 
-Los productos comercializables conectan los lotes trazados con compradores nacionales o internacionales. En el MVP, un producto puede representar una oferta simple asociada a un lote: cultivo, cantidad disponible, precio de referencia, unidad de medida y visibilidad publica.
+Los productos comercializables conectan los lotes trazados con compradores nacionales o internacionales. En el MVP, un producto puede representar una oferta simple asociada a un lote: cultivo, cantidad disponible, precio de referencia, unidad de medida y visibilidad publica. Cada producto hereda las certificaciones Fairtrade y Rainforest Alliance del lote al que esta asociado, lo que permite a los compradores verificar la calidad y origen certificado del producto.
 
-Esta feature define la publicacion y consulta de productos disponibles para comercializacion. El producto no reemplaza la trazabilidad del lote; la complementa con informacion comercial basica y debe enlazar al pasaporte digital cuando exista.
+Esta feature define la publicacion y consulta de productos disponibles para comercializacion. El producto no reemplaza la trazabilidad del lote; la complementa con informacion comercial basica y debe enlazar al pasaporte digital cuando exista, donde se pueden consultar las certificaciones vigentes del producto.
 
 El objetivo del MVP es permitir que productores o exportadores publiquen productos asociados a lotes activos y que compradores puedan consultarlos desde un catalogo publico o enviar solicitudes de compra relacionadas.
 
@@ -40,7 +40,7 @@ El objetivo del MVP es permitir que productores o exportadores publiquen product
 | --- | --- | --- | --- |
 | ACT-01 | Productor | Primario | Publica productos asociados a sus lotes. |
 | ACT-02 | Exportador | Primario | Publica o gestiona productos comercializables. |
-| ACT-03 | Comprador Internacional | Primario | Consulta productos y puede enviar solicitudes de compra. |
+| ACT-03 | Comprador Internacional | Primario | Consulta productos, verificando certificaciones y trazabilidad, y puede enviar solicitudes de compra. |
 | ACT-04 | Administrador | Primario | Audita publicaciones y puede despublicar productos. |
 | ACT-05 | Sistema de Lotes | Secundario | Valida que el lote exista, este activo y pertenezca al actor. |
 | ACT-06 | Sistema de Pasaporte Digital | Secundario | Provee URL publica de trazabilidad asociada al lote. |

@@ -4,7 +4,7 @@
 **Creado**: 27/05/2026  
 **Actualizado**: 27/05/2026  
 **Estado**: Borrador  
-**Autor**: Equipo AgroTrace  
+**Autor**: Equipo Nebbi  
 **Revisor**: Pendiente
 
 ---
@@ -26,7 +26,7 @@
 
 ## 1. Contexto y objetivo
 
-El pasaporte digital es la pieza publica que convierte la trazabilidad interna de AgroTrace Magdalena en una experiencia verificable para turistas, compradores internacionales y aliados comerciales. Cada pasaporte consolida informacion publica del productor, finca, lote, estados de cultivo, evidencias visibles y certificaciones vigentes.
+El pasaporte digital es la pieza publica que convierte la trazabilidad interna de Nebbi en una experiencia verificable para turistas, compradores internacionales y aliados comerciales. Cada pasaporte consolida informacion publica del productor, finca, lote, estados de cultivo, evidencias visibles y certificaciones vigentes.
 
 El QR es el mecanismo de acceso rapido al pasaporte digital. Puede imprimirse en productos, hoteles, fincas, material turistico o documentos comerciales.
 
@@ -640,4 +640,4 @@ Los siguientes puntos quedan excluidos de esta feature inicial y deben especific
 
 | Version | Fecha | Autor | Descripcion |
 | --- | --- | --- | --- |
-| 1.0.0 | 27/05/2026 | Equipo AgroTrace | Version inicial de la especificacion de pasaporte digital y QR. |
+| 1.0.0 | 27/05/2026 | Equipo Nebbi | Version inicial de la especificacion de pasaporte digital y QR. |

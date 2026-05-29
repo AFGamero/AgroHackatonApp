@@ -4,7 +4,7 @@
 **Creado**: 27/05/2026  
 **Actualizado**: 27/05/2026  
 **Estado**: Borrador  
-**Autor**: Equipo AgroTrace  
+**Autor**: Equipo Nebbi  
 **Revisor**: Pendiente
 
 ---
@@ -26,7 +26,7 @@
 
 ## 1. Contexto y objetivo
 
-La finca representa el espacio agricola donde se originan los productos trazados por AgroTrace Magdalena. Es el recurso base para crear lotes, asociar experiencias turisticas, registrar certificaciones a nivel de finca y construir pasaportes digitales confiables.
+La finca representa el espacio agricola donde se originan los productos trazados por Nebbi. Es el recurso base para crear lotes, asociar experiencias turisticas, registrar certificaciones a nivel de finca y construir pasaportes digitales confiables.
 
 Esta feature define la gestion backend de fincas asociadas a productores activos. Una finca debe conservar integridad historica: aunque se desactive, los lotes, evidencias y pasaportes ya publicados deben mantener su referencia al origen.
 
@@ -680,4 +680,4 @@ Los siguientes puntos quedan excluidos de esta feature inicial y deben especific
 
 | Version | Fecha | Autor | Descripcion |
 | --- | --- | --- | --- |
-| 1.0.0 | 27/05/2026 | Equipo AgroTrace | Version inicial de la especificacion de fincas. |
+| 1.0.0 | 27/05/2026 | Equipo Nebbi | Version inicial de la especificacion de fincas. |

@@ -4,7 +4,7 @@
 **Creado**: 27/05/2026  
 **Actualizado**: 27/05/2026  
 **Estado**: Borrador  
-**Autor**: Equipo AgroTrace  
+**Autor**: Equipo Nebbi  
 **Revisor**: Pendiente
 
 ---
@@ -26,7 +26,7 @@
 
 ## 1. Contexto y objetivo
 
-Las experiencias turisticas conectan el origen agricola del producto con visitantes, aliados comerciales y compradores que quieren conocer el territorio. En AgroTrace Magdalena, una experiencia se asocia a una finca y puede aparecer en catalogos publicos o en el pasaporte digital de lotes relacionados.
+Las experiencias turisticas conectan el origen agricola del producto con visitantes, aliados comerciales y compradores que quieren conocer el territorio. En Nebbi, una experiencia se asocia a una finca y puede aparecer en catalogos publicos o en el pasaporte digital de lotes relacionados.
 
 Esta feature define la gestion backend de experiencias turisticas: creacion, consulta, publicacion, actualizacion, fotografias y exposicion publica. La reserva transaccional queda fuera del MVP, pero el catalogo debe entregar informacion suficiente para contacto o coordinacion posterior.
 
