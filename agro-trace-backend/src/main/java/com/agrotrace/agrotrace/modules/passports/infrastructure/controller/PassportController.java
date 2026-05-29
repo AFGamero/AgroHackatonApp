@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -32,9 +33,9 @@ public class PassportController {
     }
 
     @GetMapping("/public/passports/{publicIdentifier}")
-    @Operation(summary = "Obtener pasaporte público por identificador")
-    public ResponseEntity<PassportResponseDTO> getPublicPassport(@PathVariable String publicIdentifier) {
-        return ResponseEntity.ok(passportService.getPassportByPublicId(publicIdentifier));
+    @Operation(summary = "Obtener pasaporte publico con toda la trazabilidad")
+    public ResponseEntity<Map<String, Object>> getPublicPassport(@PathVariable String publicIdentifier) {
+        return ResponseEntity.ok(passportService.getPublicPassport(publicIdentifier));
     }
 
     @PatchMapping("/passports/{lotId}/publish")
