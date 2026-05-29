@@ -3,7 +3,7 @@ spring:
     name: agro-trace-backend
   
   profiles:
-    active: h2
+    active: dev
   
   jackson:
     serialization:
