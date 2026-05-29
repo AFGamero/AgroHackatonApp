@@ -75,6 +75,8 @@ databaseChangeLog:
       changes:
         - update:
             tableName: lots
-            columnName: current_status
-            value: NO_CERTIFICADO
+            columns:
+              - column:
+                  name: current_status
+                  value: NO_CERTIFICADO
             where: current_status='NO_STATUS'
