@@ -4,11 +4,12 @@
   "description": "AgroTrace Magdalena - Frontend Web Application",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "rm -rf .next && next dev",
+    "build": "rm -rf .next && next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf .next node_modules/.cache"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.3.0",
