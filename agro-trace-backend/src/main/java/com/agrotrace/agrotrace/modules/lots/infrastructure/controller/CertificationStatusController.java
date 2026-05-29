@@ -37,16 +37,4 @@ public class CertificationStatusController {
     public ResponseEntity<List<CertificationStatusEvent>> getHistory(@PathVariable UUID lotId) {
         return ResponseEntity.ok(service.getHistory(lotId));
     }
-
-    @GetMapping("/public/{lotId}")
-    @Operation(summary = "Trazabilidad publica de certificaciones")
-    public ResponseEntity<List<Map<String, Object>>> getPublicHistory(@PathVariable UUID lotId) {
-        var events = service.getHistory(lotId);
-        var result = events.stream().map(e -> Map.of(
-                "status", (Object) e.getCertificationStatus().name(),
-                "date", e.getEventDate().toString(),
-                "observations", e.getObservations() != null ? e.getObservations() : ""
-        )).toList();
-        return ResponseEntity.ok(result);
-    }
 }
