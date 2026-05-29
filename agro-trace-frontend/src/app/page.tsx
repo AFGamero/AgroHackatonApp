@@ -3,6 +3,13 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { ProductIcon, CertificationBadge } from "@/components/branding";
 import {
+  ContextoSection,
+  ProblemaSection,
+  SolucionSection,
+  TecnicaSection,
+  ImpactoSection,
+} from "@/components/home";
+import {
   MapPin,
   CheckCircle,
   QrCode,
@@ -11,7 +18,6 @@ import {
   Globe,
   ArrowRight,
   Package,
-  Users,
   Sprout,
 } from "lucide-react";
 
@@ -44,7 +50,7 @@ const features = [
   {
     icon: <CheckCircle className="w-8 h-8" />,
     title: "Evidencias Visuales",
-    description: "Adjunta fotografas y documentos a cada lote. Construye confianza con pruebas verificables.",
+    description: "Adjunta fotografias y documentos a cada lote. Construye confianza con pruebas verificables.",
   },
 ];
 
@@ -139,36 +145,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 md:py-28">
-        <div className="max-w-[1280px] mx-auto px-6">
-          <div className="text-center mb-16">
-            <Badge variant="success" className="mb-4">Propuesta de Valor</Badge>
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-gray-900 mb-4">
-              Todo lo que necesitas en un solo lugar
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Nebbi ofrece a cada actor del ecosistema agricola las herramientas para conectar, verificar y comercializar con transparencia.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <div key={index} className="card p-8 hover:shadow-lg hover:border-[#6D9E13] hover:-translate-y-1 transition-all">
-                <div className="w-14 h-14 rounded-xl bg-[#DEDB8D] flex items-center justify-center text-[#6D9E13] mb-6">
-                  {feature.icon}
-                </div>
-                <h3 className="font-heading font-bold text-xl text-gray-900 mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ==== 5 NEW DATA-DRIVEN SECTIONS ==== */}
+      <ContextoSection />
+      <ProblemaSection />
+      <SolucionSection />
+      <TecnicaSection />
+      <ImpactoSection />
+      {/* ==================================== */}
 
       {/* Map Preview Section */}
       <section className="py-20 md:py-28 bg-white">
@@ -236,6 +219,37 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Features Section */}
+      <section className="py-20 md:py-28">
+        <div className="max-w-[1280px] mx-auto px-6">
+          <div className="text-center mb-16">
+            <Badge variant="success" className="mb-4">Propuesta de Valor</Badge>
+            <h2 className="font-heading font-bold text-3xl md:text-4xl text-gray-900 mb-4">
+              Todo lo que necesitas en un solo lugar
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Nebbi ofrece a cada actor del ecosistema agricola las herramientas para conectar, verificar y comercializar con transparencia.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <div key={index} className="card p-8 hover:shadow-lg hover:border-[#6D9E13] hover:-translate-y-1 transition-all">
+                <div className="w-14 h-14 rounded-xl bg-[#DEDB8D] flex items-center justify-center text-[#6D9E13] mb-6">
+                  {feature.icon}
+                </div>
+                <h3 className="font-heading font-bold text-xl text-gray-900 mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Certifications Section */}
       <section className="py-20 md:py-28 bg-[#4A7010] text-white">
         <div className="max-w-[1280px] mx-auto px-6 text-center">
@@ -269,43 +283,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* How It Works Section */}
-      <section className="py-20 md:py-28">
-        <div className="max-w-[1280px] mx-auto px-6">
-          <div className="text-center mb-16">
-            <Badge variant="success" className="mb-4">Proceso Simple</Badge>
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-gray-900 mb-4">
-              Como Funciona
-            </h2>
-            <p className="text-lg text-gray-600">
-              De la finca al comprador internacional, todo queda documentado y verificable.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-8 relative">
-            {[
-              { step: "1", title: "Registra tu Finca", desc: "Agrega ubicacion, fotos y datos basicos de tu unidad productiva." },
-              { step: "2", title: "Crea Lotes", desc: "Asocia cultivos, variedades y fechas de siembra y cosecha." },
-              { step: "3", title: "Agrega Evidencias", desc: "Sube fotos y documentos del proceso productivo." },
-              { step: "4", title: "Genera Pasaporte", desc: "Obten un QR unico para cada lote listo para compartir." },
-            ].map((item, index) => (
-              <div key={index} className="text-center relative">
-                {index < 3 && (
-                  <div className="hidden md:block absolute top-8 left-[calc(50%+32px)] w-[calc(100%-64px)] h-0.5 bg-[#DEDB8D]" />
-                )}
-                <div className="w-16 h-16 rounded-full bg-[#6D9E13] text-white font-heading font-bold text-2xl flex items-center justify-center mx-auto mb-5 shadow-md relative z-10">
-                  {item.step}
-                </div>
-                <h3 className="font-heading font-bold text-lg text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-20 md:py-28">
         <div className="max-w-[1280px] mx-auto px-6">
           <div className="bg-gradient-to-br from-[#6D9E13] to-[#4A7010] rounded-2xl p-12 md:p-16 text-center text-white shadow-xl">
             <Badge variant="success" className="mb-4">Unete a Nebbi</Badge>

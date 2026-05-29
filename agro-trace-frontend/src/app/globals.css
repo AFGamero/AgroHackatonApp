@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@source "../../src/**/*.{tsx,ts,js,jsx}";
-
 @theme {
   --color-verde-agro: #2D8B4E;
   --color-verde-oscuro: #1B5E34;
