@@ -7,6 +7,7 @@ import { CATEGORY_ICONS } from "@/components/ui/category-icons";
 import { ProductDetailModal } from "@/components/product/product-detail-modal";
 import { useProductDetail } from "@/hooks/useProductDetail";
 import { useCart } from "@/hooks/useCart";
+import { PRODUCT_IMAGES } from "@/lib/product-images";
 import type { Product } from "@/types/product";
 
 const allProducts: Product[] = [
@@ -15,7 +16,7 @@ const allProducts: Product[] = [
     name: "Guineo Verde del Magdalena",
     description:
       "Guineo verde de primera calidad, cultivado en las fertiles tierras del Magdalena. Ideal para patacones, sancochos y preparaciones tradicionales colombianas. Producto fresco cosechado directamente del campo, con certificacion de sostenibilidad y comercio justo.",
-    images: ["/nebbi.png", "/nebbi.png", "/nebbi.png", "/nebbi.png"],
+    images: [PRODUCT_IMAGES["Plátano"], PRODUCT_IMAGES["Plátano"], PRODUCT_IMAGES["Plátano"], PRODUCT_IMAGES["Plátano"]],
     price: 45000,
     originalPrice: 52000,
     discount: 13,
@@ -58,7 +59,7 @@ const allProducts: Product[] = [
     name: "Cafe Organico Sierra Nevada",
     description:
       "Cafe de especialidad cultivado en las alturas de la Sierra Nevada de Santa Marta. Notas de chocolate y caramelo, con acidez media y cuerpo sedoso. Tostado artesanalmente para garantizar el maximo sabor y aroma. Certificado organico y de comercio justo.",
-    images: ["/nebbi.png", "/nebbi.png", "/nebbi.png"],
+    images: [PRODUCT_IMAGES["Café"], PRODUCT_IMAGES["Café"], PRODUCT_IMAGES["Café"]],
     price: 85000,
     originalPrice: 95000,
     discount: 10,
@@ -100,7 +101,7 @@ const allProducts: Product[] = [
     name: "Cacao Fino de Aroma",
     description:
       "Cacao fino de aroma reconocido internacionalmente por su calidad superior. Cultivado en la region de Fundacion, Magdalena. Perfecto para la produccion de chocolate artesanal y productos gourmet. Granos fermentados y secados al sol.",
-    images: ["/nebbi.png", "/nebbi.png", "/nebbi.png"],
+    images: [PRODUCT_IMAGES["Cacao"], PRODUCT_IMAGES["Cacao"], PRODUCT_IMAGES["Cacao"]],
     price: 65000,
     originalPrice: 72000,
     discount: 9,
@@ -142,7 +143,7 @@ const allProducts: Product[] = [
     name: "Mango Tommy Atkins",
     description:
       "Mango Tommy Atkins de excelente calidad, cultivado en las tierras calidas del Magdalena. Dulce, jugoso y con fibra fina. Ideal para jugos, ensaladas y consumo directo. Cosechado en su punto optimo de maduracion.",
-    images: ["/nebbi.png", "/nebbi.png", "/nebbi.png"],
+    images: [PRODUCT_IMAGES["Mango"], PRODUCT_IMAGES["Mango"], PRODUCT_IMAGES["Mango"]],
     price: 30000,
     originalPrice: 38000,
     discount: 21,
@@ -184,7 +185,7 @@ const allProducts: Product[] = [
     name: "Arroz Oro del Magdalena",
     description:
       "Arroz premium de grano largo, cultivado en las vegas del rio Magdalena. Grano entero, blanco y brillante. Ideal para acompanamientos, arroces y preparaciones tradicionales colombianas. Producto de alta calidad con garantia de frescura.",
-    images: ["/nebbi.png", "/nebbi.png", "/nebbi.png"],
+    images: [PRODUCT_IMAGES["Arroz"], PRODUCT_IMAGES["Arroz"], PRODUCT_IMAGES["Arroz"]],
     price: 55000,
     originalPrice: 55000,
     discount: 0,
@@ -227,7 +228,7 @@ const allProducts: Product[] = [
     name: "Aceite de Palma Africana",
     description:
       "Aceite de palma aceitera 100% natural, producido en las plantaciones del Magdalena. Rico en vitamina E y carotenos. Ideal para cocina, frituras y procesamiento alimentario. Cultivado con practicas sostenibles y certificacion ambiental.",
-    images: ["/nebbi.png", "/nebbi.png", "/nebbi.png"],
+    images: [PRODUCT_IMAGES["Palma Aceitera"], PRODUCT_IMAGES["Palma Aceitera"], PRODUCT_IMAGES["Palma Aceitera"]],
     price: 40000,
     originalPrice: 45000,
     discount: 11,
@@ -268,7 +269,7 @@ const allProducts: Product[] = [
     name: "Carne Bovina Premium",
     description:
       "Carne bovina de ganado criollo, alimentado con pastos naturales del Magdalena. Corte premium con marmoleo ideal para asados, bifes y preparaciones gourmet. Producto fresco con garantia de trazabilidad desde el pastoreo hasta su mesa.",
-    images: ["/nebbi.png", "/nebbi.png", "/nebbi.png"],
+    images: [PRODUCT_IMAGES["Ganadería"], PRODUCT_IMAGES["Ganadería"], PRODUCT_IMAGES["Ganadería"]],
     price: 25000,
     originalPrice: 30000,
     discount: 16,
@@ -310,7 +311,7 @@ const allProducts: Product[] = [
     name: "Platano Harton del Magdalena",
     description:
       "Platano Harton fresco, cultivado en las fertiles tierras del Magdalena. Ideal para patacones, sancochos y fritos. Producto de primera calidad con textura perfecta y sabor tradicional colombiano.",
-    images: ["/nebbi.png", "/nebbi.png", "/nebbi.png"],
+    images: [PRODUCT_IMAGES["Plátano"], PRODUCT_IMAGES["Plátano"], PRODUCT_IMAGES["Plátano"]],
     price: 35000,
     originalPrice: 35000,
     discount: 0,

@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import type { Product, CertificationType } from "@/types/product";
 import { CERTIFICATION_CONFIG } from "@/types/product";
 import { TraceabilityBadge } from "./traceability-badge";
+import { PRODUCT_IMAGES } from "@/lib/product-images";
 
 interface ProductCardProps {
   product: Product;
@@ -43,14 +44,17 @@ export function ProductCard({ product, onOpenDetail, onAddToCart, index = 0 }: P
         className="block w-full text-left"
         aria-label={`Ver detalle de ${product.name}`}
       >
-        <div className="relative aspect-square bg-gradient-to-br from-[#DEDB8D]/30 to-[#E3F2FD]/30 p-6 flex items-center justify-center">
-          <Image
-            src={product.images[0] || "/nebbi.png"}
-            alt={product.name}
-            width={160}
-            height={160}
-            className={`object-contain group-hover:scale-105 transition-transform duration-300 ${isOutOfStock ? "opacity-50" : ""}`}
-          />
+        <div className={`relative aspect-square w-full overflow-hidden ${isOutOfStock ? "opacity-50" : ""}`}>
+          <div className="w-full h-full bg-gradient-to-br from-[#DEDB8D]/30 to-[#E3F2FD]/30 flex items-center justify-center p-6">
+            <Image
+              src={product.images[0] || PRODUCT_IMAGES[product.category] || "/nebbi.png"}
+              alt={product.name}
+              width={320}
+              height={320}
+              className="object-contain w-full h-full group-hover:scale-105 transition-transform duration-300"
+              unoptimized
+            />
+          </div>
 
           <div className="absolute top-3 left-3 flex flex-col gap-1.5">
             {isOutOfStock ? (
@@ -65,11 +69,6 @@ export function ProductCard({ product, onOpenDetail, onAddToCart, index = 0 }: P
           </div>
 
           <div className="absolute top-3 right-3 flex gap-1.5">
-            {product.discount != null && product.discount > 0 && !isOutOfStock && (
-              <span className="bg-[#F44336] text-white text-[10px] font-semibold px-1.5 py-0.5 rounded-full">
-                -{product.discount}%
-              </span>
-            )}
             <span className="w-8 h-8 bg-white/80 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
               <Heart className="w-4 h-4 text-gray-400" />
             </span>

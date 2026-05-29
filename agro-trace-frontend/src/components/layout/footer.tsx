@@ -6,7 +6,7 @@ const footerLinks = {
     { href: "/tienda", label: "Tienda" },
     { href: "/mapa", label: "Mapa" },
     { href: "/productores", label: "Productores" },
-    { href: "/experiencias", label: "Experiencias" },
+    { href: "/experiencias", label: "NebbiBot" },
   ],
   recursos: [
     { href: "/tienda", label: "Comprar Productos" },

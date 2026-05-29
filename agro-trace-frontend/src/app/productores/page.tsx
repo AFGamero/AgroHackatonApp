@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProducerRegistrationModal } from "@/components/seller";
+import { QrButton } from "@/components/ui/qr-modal";
 
 const productores = [
   {
@@ -310,13 +311,20 @@ export default function ProductoresPage() {
                 <span className="text-xs text-gray-500">
                   {producer.productCount} productos
                 </span>
-                <Link
-                  href="/tienda"
-                  className="inline-flex items-center gap-1 text-sm font-medium text-[#6D9E13] hover:text-[#4A7010] transition-colors group/link"
-                >
-                  Ver productos
-                  <ArrowRight className="w-4 h-4 group-hover/link:translate-x-0.5 transition-transform" />
-                </Link>
+                <div className="flex items-center gap-2">
+                  <QrButton
+                    url={`${typeof window !== "undefined" ? window.location.origin : ""}/mapa?search=${encodeURIComponent(producer.name)}`}
+                    producerName={producer.name}
+                    variant="outline"
+                  />
+                  <Link
+                    href="/tienda"
+                    className="inline-flex items-center gap-1 text-sm font-medium text-[#6D9E13] hover:text-[#4A7010] transition-colors group/link"
+                  >
+                    Ver productos
+                    <ArrowRight className="w-4 h-4 group-hover/link:translate-x-0.5 transition-transform" />
+                  </Link>
+                </div>
               </div>
             </motion.div>
           ))}

@@ -144,7 +144,7 @@ export const mockProducers: Producer[] = [
     type: 'planta',
     coordinates: { lat: 10.6289, lng: -74.1923 },
     address: 'Finca San José, Corregimiento El difÍcil',
-    municipality: ' Plato',
+    municipality: 'Plato',
     region: 'Magdalena',
     representative: {
       name: 'Ana Patricia Varon',

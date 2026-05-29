@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { Phone, Mail, MapPin, Award, Package, Shield, ChevronRight, ArrowLeft, Send, Check } from 'lucide-react';
+import { Phone, Mail, MapPin, Award, Package, Shield, ChevronRight, ArrowLeft, Send, Check, QrCode } from 'lucide-react';
 import { Producer, PRODUCT_LABELS, CertificationType } from './types';
+import { QrModal } from '@/components/ui/qr-modal';
 
 interface ProducerPopupProps {
   producer: Producer;
@@ -27,7 +28,10 @@ export default function ProducerPopup({ producer }: ProducerPopupProps) {
   const [viewMode, setViewMode] = useState<ViewMode>('summary');
   const [contactForm, setContactForm] = useState({ name: '', message: '' });
   const [formSent, setFormSent] = useState(false);
+  const [isQrOpen, setIsQrOpen] = useState(false);
   const { rainforestAlliance, traceability, representative, products } = producer;
+
+  const qrUrl = `${window.location.origin}/mapa?search=${encodeURIComponent(producer.name)}`;
 
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault();
@@ -179,6 +183,13 @@ export default function ProducerPopup({ producer }: ProducerPopupProps) {
               Ver detalles
             </button>
             <button
+              onClick={() => setIsQrOpen(true)}
+              className="flex items-center justify-center gap-1.5 bg-white border border-[#6D9E13] text-[#6D9E13] text-xs font-medium px-3 py-2 rounded-lg hover:bg-green-50 transition-colors"
+            >
+              <QrCode className="w-3.5 h-3.5" />
+              QR
+            </button>
+            <button
               onClick={() => setViewMode('contact')}
               className="flex-1 flex items-center justify-center gap-1.5 bg-white border border-[#6D9E13] text-[#6D9E13] text-xs font-medium py-2 rounded-lg hover:bg-green-50 transition-colors"
             >
@@ -187,6 +198,13 @@ export default function ProducerPopup({ producer }: ProducerPopupProps) {
             </button>
           </div>
         </div>
+
+        <QrModal
+          isOpen={isQrOpen}
+          onClose={() => setIsQrOpen(false)}
+          url={qrUrl}
+          producerName={producer.name}
+        />
       </div>
     );
   }

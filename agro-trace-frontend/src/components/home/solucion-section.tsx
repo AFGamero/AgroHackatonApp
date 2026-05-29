@@ -55,11 +55,7 @@ export function SolucionSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className={`p-6 rounded-xl border text-center ${
-                item.highlight
-                  ? "bg-white border-[#6D9E13]/20 shadow-md"
-                  : "bg-white border-gray-100"
-              }`}
+              className={`p-6 rounded-xl border text-center bg-white border-[#6D9E13]/20 shadow-md`}
             >
               <div
                 className={`w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4 ${

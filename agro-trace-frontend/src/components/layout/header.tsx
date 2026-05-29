@@ -11,7 +11,7 @@ const navLinks = [
   { href: "/tienda", label: "Tienda" },
   { href: "/mapa", label: "Mapa" },
   { href: "/productores", label: "Productores" },
-  { href: "/experiencias", label: "Experiencias" },
+  { href: "/experiencias", label: "NebbiBot" },
 ];
 
 export function Header() {
@@ -79,19 +79,6 @@ export function Header() {
             )}
           </button>
 
-          <Link
-            href="/tienda"
-            className="hidden md:inline-flex items-center px-4 py-2 text-sm font-medium text-[#FFFAF3] border border-[#FFFAF3]/30 rounded-lg hover:bg-[#FFFAF3]/10 transition-colors"
-          >
-            Iniciar Sesion
-          </Link>
-          <Link
-            href="/auth/register"
-            className="inline-flex items-center px-4 py-2 text-sm font-semibold text-[#4A7010] bg-[#FFFAF3] rounded-lg hover:bg-[#DEDB8D] transition-colors shadow-sm"
-          >
-            Registrarse
-          </Link>
-
           <button
             className="md:hidden p-2 text-[#FFFAF3] rounded-lg hover:bg-[#FFFAF3]/10 transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -129,15 +116,6 @@ export function Header() {
                 </Link>
               );
             })}
-            <div className="border-t border-[#FFFAF3]/10 mt-2 pt-3">
-              <Link
-                href="/tienda"
-                className="block px-3 py-3 text-sm font-medium text-[#FFFAF3]/80 hover:text-[#FFFAF3] hover:bg-[#FFFAF3]/10 rounded-lg transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Iniciar Sesion
-              </Link>
-            </div>
           </nav>
         </div>
       )}

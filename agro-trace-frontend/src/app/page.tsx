@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { ProductIcon, CertificationBadge } from "@/components/branding";
 import {
@@ -67,10 +66,10 @@ const productIcons = [
 ];
 
 const stats = [
-  { value: "15+", label: "Fincas Activas", icon: <Sprout className="w-5 h-5" /> },
-  { value: "4", label: "Tipos de Producto", icon: <Package className="w-5 h-5" /> },
-  { value: "2", label: "Certificaciones", icon: <ShieldCheck className="w-5 h-5" /> },
-  { value: "100%", label: "Trazabilidad Digital", icon: <QrCode className="w-5 h-5" /> },
+  { value: "22M+", label: "Toneladas de banano exportadas", icon: <Sprout className="w-5 h-5" /> },
+  { value: "40%", label: "Pierden trazabilidad los productores", icon: <Package className="w-5 h-5" /> },
+  { value: "85%", label: "Pequeños productores sin certificación", icon: <ShieldCheck className="w-5 h-5" /> },
+  { value: "3.2M", label: "Hectáreas cultivables en Colombia", icon: <QrCode className="w-5 h-5" /> },
 ];
 
 export default function HomePage() {
@@ -111,16 +110,66 @@ export default function HomePage() {
           </div>
 
           <div className="hidden md:flex justify-center">
-            <div className="relative">
+            <div className="relative w-[300px] h-[270px]">
               <div className="absolute inset-0 bg-[#FFFAF3]/10 rounded-full blur-3xl scale-150" />
-              <Image
-                src="/logo-nebbi.png"
-                alt="Nebbi Mascot"
-                width={300}
-                height={270}
-                className="drop-shadow-2xl"
-                priority
-              />
+              <svg viewBox="0 0 300 270" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-2xl">
+                <defs>
+                  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#87CEEB" stopOpacity="0.6" />
+                    <stop offset="60%" stopColor="#B0E0E6" stopOpacity="0.3" />
+                    <stop offset="100%" stopColor="#F0E68C" stopOpacity="0.5" />
+                  </linearGradient>
+                  <linearGradient id="mt1" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#4A7010" />
+                    <stop offset="100%" stopColor="#6D9E13" />
+                  </linearGradient>
+                  <linearGradient id="mt2" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#2E5A0E" />
+                    <stop offset="100%" stopColor="#4A7010" />
+                  </linearGradient>
+                  <linearGradient id="mt3" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#1B3A08" />
+                    <stop offset="100%" stopColor="#2E5A0E" />
+                  </linearGradient>
+                </defs>
+                <rect width="300" height="270" fill="url(#sky)" rx="12" />
+                <circle cx="180" cy="40" r="18" fill="#FFD700" opacity="0.9" />
+                <circle cx="180" cy="40" r="30" fill="#FFD700" opacity="0.15" />
+                <path d="M0 220l30-50 25 20 30-60 40 30 35-55 30 15 25-45 40 40 20-35 25 20v70H0z" fill="url(#mt3)" opacity="0.9" />
+                <path d="M-10 240l40-45 20 15 35-50 30 25 40-35 35 20 20-30 25 35v50H-10z" fill="url(#mt2)" opacity="0.85" />
+                <path d="M0 260l30-35 20 10 25-40 35 20 40-25 30 15 15-20 35 25v30H0z" fill="url(#mt1)" opacity="0.8" />
+                <rect x="0" y="220" width="300" height="50" fill="#6D9E13" opacity="0.4" />
+                <rect x="0" y="235" width="300" height="35" fill="#4A7010" opacity="0.6" />
+                <g transform="translate(20, 195)">
+                  <rect x="0" y="5" width="25" height="20" rx="2" fill="#8B7355" opacity="0.7" />
+                  <rect x="-2" y="2" width="29" height="5" rx="2" fill="#6B3410" opacity="0.8" />
+                  <circle cx="8" cy="15" r="8" fill="#228B22" opacity="0.7" />
+                  <circle cx="17" cy="12" r="6" fill="#2E8B2E" opacity="0.6" />
+                </g>
+                <g transform="translate(80, 200)">
+                  <rect x="0" y="5" width="20" height="16" rx="2" fill="#8B7355" opacity="0.6" />
+                  <circle cx="6" cy="12" r="7" fill="#228B22" opacity="0.7" />
+                  <circle cx="14" cy="10" r="5" fill="#2E8B2E" opacity="0.5" />
+                </g>
+                <g transform="translate(150, 198)">
+                  <rect x="0" y="5" width="22" height="17" rx="2" fill="#8B7355" opacity="0.7" />
+                  <rect x="-1" y="2" width="24" height="4" rx="1" fill="#6B3410" opacity="0.7" />
+                  <circle cx="7" cy="13" r="8" fill="#2E8B2E" opacity="0.7" />
+                  <circle cx="16" cy="11" r="6" fill="#228B22" opacity="0.6" />
+                </g>
+                <g transform="translate(230, 202)">
+                  <rect x="0" y="5" width="18" height="15" rx="2" fill="#8B7355" opacity="0.5" />
+                  <circle cx="6" cy="11" r="7" fill="#228B22" opacity="0.6" />
+                </g>
+                <g transform="translate(265, 210)">
+                  <rect x="0" y="3" width="15" height="12" rx="2" fill="#DAA520" opacity="0.7" />
+                  <circle cx="4" cy="8" r="5" fill="#DAA520" opacity="0.6" />
+                </g>
+                <line x1="0" y1="195" x2="35" y2="200" stroke="#8B7355" strokeWidth="1.5" opacity="0.4" />
+                <line x1="60" y1="200" x2="80" y2="202" stroke="#8B7355" strokeWidth="1.5" opacity="0.4" />
+                <line x1="100" y1="202" x2="130" y2="198" stroke="#8B7355" strokeWidth="1.5" opacity="0.4" />
+                <line x1="170" y1="198" x2="210" y2="200" stroke="#8B7355" strokeWidth="1.5" opacity="0.4" />
+              </svg>
             </div>
           </div>
         </div>

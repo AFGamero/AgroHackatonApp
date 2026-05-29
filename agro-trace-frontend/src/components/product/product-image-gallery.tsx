@@ -47,6 +47,7 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
               width={400}
               height={400}
               className="object-contain w-full h-full"
+              unoptimized
               style={
                 isZoomed
                   ? { transform: "scale(1.8)", transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%` }
@@ -81,6 +82,7 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
                 width={64}
                 height={64}
                 className="object-contain w-full h-full bg-white"
+                unoptimized
               />
             </button>
           ))}
