@@ -19,15 +19,15 @@ export function NebbiLogo({ size = 40, showText = true, ...props }: LogoProps) {
         xmlns="http://www.w3.org/2000/svg"
         {...props}
       >
-        <circle cx="32" cy="32" r="28" fill="#2D8B4E" />
-        <circle cx="32" cy="32" r="20" fill="#1B5E34" />
-        <circle cx="24" cy="28" r="6" fill="#2D8B4E" />
-        <circle cx="40" cy="28" r="6" fill="#2D8B4E" />
+        <circle cx="32" cy="32" r="28" fill="#6D9E13" />
+        <circle cx="32" cy="32" r="20" fill="#4A7010" />
+        <circle cx="24" cy="28" r="6" fill="#6D9E13" />
+        <circle cx="40" cy="28" r="6" fill="#6D9E13" />
         <circle cx="25" cy="27" r="3" fill="#1565C0" />
         <circle cx="41" cy="27" r="3" fill="#1565C0" />
         <circle cx="26" cy="26" r="1.5" fill="#FFC107" />
         <circle cx="42" cy="26" r="1.5" fill="#FFC107" />
-        <ellipse cx="32" cy="38" rx="8" ry="5" fill="#1B5E34" />
+        <ellipse cx="32" cy="38" rx="8" ry="5" fill="#4A7010" />
         <circle cx="29" cy="37" r="2" fill="#212121" />
         <circle cx="35" cy="37" r="2" fill="#212121" />
         <path
@@ -45,8 +45,8 @@ export function NebbiLogo({ size = 40, showText = true, ...props }: LogoProps) {
           d="M52 28 Q56 18 46 14 Q40 24 44 30"
           fill="#1565C0"
         />
-        <ellipse cx="18" cy="38" rx="8" ry="6" fill="#2D8B4E" />
-        <ellipse cx="46" cy="38" rx="8" ry="6" fill="#2D8B4E" />
+        <ellipse cx="18" cy="38" rx="8" ry="6" fill="#6D9E13" />
+        <ellipse cx="46" cy="38" rx="8" ry="6" fill="#6D9E13" />
       </svg>
       {showText && (
         <span className="font-heading font-bold text-xl text-white">Nebbi</span>
@@ -67,32 +67,32 @@ export function GuineoLogo({ size = 32, ...props }: LogoProps) {
     >
       <path
         d="M16 4C12 4 8 10 8 20C8 30 12 38 16 40C20 38 24 30 24 20C24 10 20 4 16 4Z"
-        fill="#2D8B4E"
+        fill="#6D9E13"
       />
-      <ellipse cx="16" cy="28" rx="8" ry="5" fill="#E8F5E9" />
+      <ellipse cx="16" cy="28" rx="8" ry="5" fill="#DEDB8D" />
       <circle cx="16" cy="28" r="3" fill="#FFC107" />
       <path
         d="M10 16C10 10 14 6 16 6C18 6 22 10 22 16"
-        stroke="#1B5E34"
+        stroke="#4A7010"
         strokeWidth="2"
         fill="none"
         strokeLinecap="round"
       />
       <path
         d="M8 24C6 28 8 36 16 40"
-        stroke="#1B5E34"
+        stroke="#4A7010"
         strokeWidth="1.5"
         fill="none"
         strokeLinecap="round"
       />
       <path
         d="M24 24C26 28 24 36 16 40"
-        stroke="#1B5E34"
+        stroke="#4A7010"
         strokeWidth="1.5"
         fill="none"
         strokeLinecap="round"
       />
-      <ellipse cx="16" cy="20" rx="3" ry="2" fill="#A5D6A7" opacity="0.5" />
+      <ellipse cx="16" cy="20" rx="3" ry="2" fill="#9FC238" opacity="0.5" />
     </svg>
   );
 }
@@ -108,12 +108,12 @@ export function NebbiMascot({ size = 200, variant = "full", ...props }: LogoProp
         xmlns="http://www.w3.org/2000/svg"
         {...props}
       >
-        <circle cx="28" cy="28" r="26" fill="#2D8B4E" />
+        <circle cx="28" cy="28" r="26" fill="#6D9E13" />
         <circle cx="20" cy="24" r="5" fill="#1565C0" />
         <circle cx="36" cy="24" r="5" fill="#1565C0" />
         <circle cx="21" cy="23" r="2" fill="#FFC107" />
         <circle cx="37" cy="23" r="2" fill="#FFC107" />
-        <ellipse cx="28" cy="34" rx="6" ry="4" fill="#1B5E34" />
+        <ellipse cx="28" cy="34" rx="6" ry="4" fill="#4A7010" />
         <circle cx="26" cy="33" r="1.5" fill="#212121" />
         <circle cx="30" cy="33" r="1.5" fill="#212121" />
         <path d="M22 38 Q28 42 34 38" stroke="#212121" strokeWidth="1.5" fill="none" strokeLinecap="round" />
@@ -132,12 +132,12 @@ export function NebbiMascot({ size = 200, variant = "full", ...props }: LogoProp
         {...props}
         className="animate-pulse"
       >
-        <circle cx="28" cy="28" r="26" fill="#2D8B4E" />
+        <circle cx="28" cy="28" r="26" fill="#6D9E13" />
         <circle cx="20" cy="24" r="5" fill="#1565C0" />
         <circle cx="36" cy="24" r="5" fill="#1565C0" />
         <circle cx="21" cy="23" r="2" fill="#FFC107" />
         <circle cx="37" cy="23" r="2" fill="#FFC107" />
-        <ellipse cx="28" cy="34" rx="6" ry="4" fill="#1B5E34" />
+        <ellipse cx="28" cy="34" rx="6" ry="4" fill="#4A7010" />
         <circle cx="26" cy="33" r="1.5" fill="#212121" />
         <circle cx="30" cy="33" r="1.5" fill="#212121" />
         <path d="M22 38 Q28 42 34 38" stroke="#212121" strokeWidth="1.5" fill="none" strokeLinecap="round" />
@@ -154,25 +154,25 @@ export function NebbiMascot({ size = 200, variant = "full", ...props }: LogoProp
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <ellipse cx="100" cy="110" rx="55" ry="45" fill="#2D8B4E" />
-      <ellipse cx="100" cy="115" rx="40" ry="30" fill="#1B5E34" />
-      <circle cx="70" cy="90" r="14" fill="#2D8B4E" />
-      <circle cx="130" cy="90" r="14" fill="#2D8B4E" />
+      <ellipse cx="100" cy="110" rx="55" ry="45" fill="#6D9E13" />
+      <ellipse cx="100" cy="115" rx="40" ry="30" fill="#4A7010" />
+      <circle cx="70" cy="90" r="14" fill="#6D9E13" />
+      <circle cx="130" cy="90" r="14" fill="#6D9E13" />
       <circle cx="71" cy="88" r="7" fill="#1565C0" />
       <circle cx="131" cy="88" r="7" fill="#1565C0" />
       <circle cx="73" cy="86" r="3" fill="#FFC107" />
       <circle cx="133" cy="86" r="3" fill="#FFC107" />
-      <ellipse cx="100" cy="130" rx="18" ry="10" fill="#1B5E34" />
+      <ellipse cx="100" cy="130" rx="18" ry="10" fill="#4A7010" />
       <circle cx="94" cy="128" r="4" fill="#212121" />
       <circle cx="106" cy="128" r="4" fill="#212121" />
       <path d="M82 140 Q100 150 118 140" stroke="#212121" strokeWidth="2" fill="none" strokeLinecap="round" />
       <path d="M35 100 Q25 70 45 60 Q55 85 48 105" fill="#1565C0" />
       <path d="M165 100 Q175 70 155 60 Q145 85 152 105" fill="#1565C0" />
-      <ellipse cx="40" cy="130" rx="18" ry="14" fill="#2D8B4E" />
-      <ellipse cx="160" cy="130" rx="18" ry="14" fill="#2D8B4E" />
-      <path d="M60 160 Q80 170 100 165 Q120 170 140 160" stroke="#1B5E34" strokeWidth="10" strokeLinecap="round" fill="none" />
-      <ellipse cx="55" cy="75" rx="8" ry="12" fill="#2D8B4E" />
-      <ellipse cx="145" cy="75" rx="8" ry="12" fill="#2D8B4E" />
+      <ellipse cx="40" cy="130" rx="18" ry="14" fill="#6D9E13" />
+      <ellipse cx="160" cy="130" rx="18" ry="14" fill="#6D9E13" />
+      <path d="M60 160 Q80 170 100 165 Q120 170 140 160" stroke="#4A7010" strokeWidth="10" strokeLinecap="round" fill="none" />
+      <ellipse cx="55" cy="75" rx="8" ry="12" fill="#6D9E13" />
+      <ellipse cx="145" cy="75" rx="8" ry="12" fill="#6D9E13" />
       <ellipse cx="55" cy="78" rx="4" ry="6" fill="#1565C0" />
       <ellipse cx="145" cy="78" rx="4" ry="6" fill="#1565C0" />
     </svg>
@@ -183,24 +183,24 @@ export function ProductIcon({ product, size = 24 }: { product: string; size?: nu
   const icons: Record<string, ReactElement> = {
     guineo: (
       <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-        <path d="M12 3C10 3 7 6 7 11C7 16 10 19 12 20C14 19 17 16 17 11C17 6 14 3 12 3Z" fill="#2D8B4E" />
-        <ellipse cx="12" cy="13" rx="5" ry="3" fill="#E8F5E9" />
+        <path d="M12 3C10 3 7 6 7 11C7 16 10 19 12 20C14 19 17 16 17 11C17 6 14 3 12 3Z" fill="#6D9E13" />
+        <ellipse cx="12" cy="13" rx="5" ry="3" fill="#DEDB8D" />
         <circle cx="12" cy="13" r="1.5" fill="#FFC107" />
-        <path d="M8 9C8 6 10 4 12 4C14 4 16 6 16 9" stroke="#1B5E34" strokeWidth="1.2" fill="none" />
+        <path d="M8 9C8 6 10 4 12 4C14 4 16 6 16 9" stroke="#4A7010" strokeWidth="1.2" fill="none" />
       </svg>
     ),
     cafe: (
       <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
         <ellipse cx="12" cy="14" rx="7" ry="6" fill="#6F4E37" />
         <ellipse cx="12" cy="13" rx="5" ry="4" fill="#8B6914" />
-        <path d="M8 8C7 6 9 4 12 4C15 4 17 6 16 8" stroke="#2D8B4E" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+        <path d="M8 8C7 6 9 4 12 4C15 4 17 6 16 8" stroke="#6D9E13" strokeWidth="1.5" fill="none" strokeLinecap="round" />
       </svg>
     ),
     cacao: (
       <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
         <ellipse cx="12" cy="14" rx="6" ry="7" fill="#4A2C2A" />
         <ellipse cx="12" cy="12" rx="4" ry="5" fill="#6B4423" />
-        <path d="M10 6L12 4L14 6" stroke="#2D8B4E" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+        <path d="M10 6L12 4L14 6" stroke="#6D9E13" strokeWidth="1.5" fill="none" strokeLinecap="round" />
       </svg>
     ),
     naranja: (
@@ -219,9 +219,9 @@ export function ProductIcon({ product, size = 24 }: { product: string; size?: nu
     ),
     default: (
       <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-        <circle cx="12" cy="12" r="8" fill="#2D8B4E" />
-        <path d="M8 12C8 12 10 8 12 8C14 8 16 12 16 12" stroke="#1B5E34" strokeWidth="1.5" fill="none" />
-        <path d="M12 12L12 18" stroke="#1B5E34" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="12" cy="12" r="8" fill="#6D9E13" />
+        <path d="M8 12C8 12 10 8 12 8C14 8 16 12 16 12" stroke="#4A7010" strokeWidth="1.5" fill="none" />
+        <path d="M12 12L12 18" stroke="#4A7010" strokeWidth="1.5" strokeLinecap="round" />
       </svg>
     ),
   };

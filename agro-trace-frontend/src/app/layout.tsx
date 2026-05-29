@@ -4,9 +4,10 @@ import Footer from "@/components/layout/footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"),
   title: "Nebbi | Trazabilidad Agricola del Magdalena",
   description:
-    "Plataforma digital de trazabilidad agricola, turismo rural y comercializacion internacional para productores del departamento del Magdalena, Colombia.",
+    "Plataforma digital de trazabilidad agricola, turismo rural y comercializacion internacional para productores del departamento del Magdalena, Colombia. Sabor Caribe, Flow Digital.",
   keywords: [
     "trazabilidad agricola",
     "productos agricolas",
@@ -18,12 +19,17 @@ export const metadata: Metadata = {
     "turismo rural",
   ],
   authors: [{ name: "Equipo Nebbi" }],
+  icons: {
+    icon: "/logo-nebbi.png",
+    apple: "/logo-nebbi.png",
+  },
   openGraph: {
     title: "Nebbi | Trazabilidad Agricola del Magdalena",
     description:
-      "Plataforma digital de trazabilidad agricola para productores del Magdalena.",
+      "Plataforma digital de trazabilidad agricola para productores del Magdalena. Sabor Caribe, Flow Digital.",
     locale: "es_CO",
     type: "website",
+    images: ["/logo-nebbi.png"],
   },
 };
 
@@ -38,11 +44,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Baloo:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-gray-50">
+      <body className="min-h-screen flex flex-col bg-[#FFFAF3]">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

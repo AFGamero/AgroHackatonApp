@@ -12,17 +12,17 @@ interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
 
 const variantStyles: Record<BadgeVariant, string> = {
   default: "bg-gray-100 text-gray-700 border-gray-300",
-  success: "bg-verde-claro text-verde-oscuro",
+  success: "bg-[#DEDB8D] text-[#4A7010]",
   warning: "bg-[#FFF8E1] text-[#F57F17]",
   error: "bg-[#FFEBEE] text-[#C62828]",
-  info: "bg-azul-claro text-azul-profundo",
+  info: "bg-[#E3F2FD] text-[#1565C0]",
   fairtrade: "bg-[#FFF3E0] text-[#E65100] border-[#FFCC80]",
   rainforest: "bg-[#E8F5E9] text-[#2E7D32] border-[#A5D6A7]",
   organic: "bg-[#E3F2FD] text-[#1565C0] border-[#90CAF9]",
 };
 
 const statusStyles: Record<BadgeStatus, string> = {
-  activo: "bg-verde-claro text-verde-oscuro",
+  activo: "bg-[#DEDB8D] text-[#4A7010]",
   pendiente: "bg-[#FFF8E1] text-[#F57F17]",
   vencido: "bg-[#FFEBEE] text-[#C62828]",
 };

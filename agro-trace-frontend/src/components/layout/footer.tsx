@@ -1,16 +1,17 @@
 import Link from "next/link";
-import { NebbiLogo } from "@/components/branding";
+import Image from "next/image";
 
 const footerLinks = {
   plataforma: [
     { href: "/tienda", label: "Tienda" },
+    { href: "/mapa", label: "Mapa" },
+    { href: "/productores", label: "Productores" },
     { href: "/experiencias", label: "Experiencias" },
-    { href: "/pasaporte", label: "Pasaporte Digital" },
   ],
   recursos: [
-    { href: "/productores", label: "Para Productores" },
-    { href: "/compradores", label: "Para Compradores" },
-    { href: "/turistas", label: "Para Turistas" },
+    { href: "/auth/register", label: "Crear Cuenta" },
+    { href: "/tienda", label: "Comprar Productos" },
+    { href: "/about", label: "Como Funciona" },
   ],
   empresa: [
     { href: "/about", label: "Acerca de Nebbi" },
@@ -25,9 +26,18 @@ export function Footer() {
       <div className="max-w-[1280px] mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <NebbiLogo size={32} showText={false} />
-              <span className="font-heading font-bold text-xl text-white">Nebbi</span>
+            <div className="flex items-center gap-3 mb-4">
+              <Image
+                src="/logo-nebbi.png"
+                alt="Nebbi Logo"
+                width={36}
+                height={36}
+                className="rounded-lg"
+              />
+              <div className="flex flex-col">
+                <span className="font-heading font-bold text-xl text-white">Nebbi</span>
+                <span className="text-[10px] text-[#DEDB8D] tracking-wider">SABOR CARIBE, FLOW DIGITAL</span>
+              </div>
             </div>
             <p className="text-sm text-gray-400 max-w-xs">
               Plataforma digital de trazabilidad agricola para productores del Magdalena, Colombia.
