@@ -38,7 +38,7 @@ management:
 
 app:
   jwt:
-    secret: "YWdyb3RyYWNlbWFnZGFsZW5hMjAyNnNlY3JldGtleTEyMw=="
+    secret: ${JWT_SECRET:YWdyb3RyYWNlbWFnZGFsZW5hMjAyNnNlY3JldGtleTEyMw==}
     expiration: 900000
     refresh-expiration: 604800000
   
