@@ -9,7 +9,6 @@ const footerLinks = {
     { href: "/experiencias", label: "Experiencias" },
   ],
   recursos: [
-    { href: "/auth/register", label: "Crear Cuenta" },
     { href: "/tienda", label: "Comprar Productos" },
     { href: "/about", label: "Como Funciona" },
   ],

@@ -591,11 +591,11 @@ Ventana abierta:
 
 ### 9.3 Mapa de ubicación de productos
 
-La seccion de mapa permite a los usuarios buscar productos agricolas de la costa colombiana visualmente en un mapa interactivo.
+La seccion de mapa permite a los usuarios buscar productos agricolas de la costa colombiana visualmente en un mapa interactivo, asi como descubrir zonas de agroturismo abiertas al publico.
 
 #### 9.3.1 Descripcion general
 
-El mapa muestra puntos de ubicacion de productores y fincas en el departamento del Magdalena. Cada punto representa un lugar donde se produce un producto agricultural especifico.
+El mapa muestra puntos de ubicacion de productores y fincas en el departamento del Magdalena, junto con puntos de agroturismo donde se pueden solicitar recorridos guiados. Cada punto representa un lugar donde se produce un producto agricultural especifico o una finca abierta al turismo.
 
 #### 9.3.2 Barra de busqueda
 
@@ -622,6 +622,7 @@ Cada producto tiene un icono representativo en el mapa:
 | Maiz | Mazorca de maiz | Icono de mazorca con hojas |
 | Tomate | Tomate rojo | Icono de tomate |
 | Mango | Mango entero | Icono de mango verde |
+| Agroturismo | Hoja + persona | Icono de granja abierta al turismo |
 
 #### 9.3.4 Interaccion con puntos del mapa
 
@@ -657,6 +658,46 @@ Contenido:
   - Boton "Solicitar producto": Primary button, full width
 ```
 
+#### 9.3.5bis Popup de Agroturismo
+
+```
+Diseno:
+  - Width: 340px
+  - Background: Blanco (#FFFFFF)
+  - Border-radius: 12px
+  - Shadow: 0 4px 16px rgba(0,0,0,0.15)
+  - Borde superior con color cyan (#00BCD4) de 4px para diferenciarlo
+  
+Contenido:
+  - Imagen: 100% width, aspect ratio 16:9, border-radius top
+  - Badge "AGROTURISMO": posicionado sobre la imagen, esquina superior izquierda
+  - Nombre de la finca: text-lg, DM Sans bold, Gris 900
+  - Tipo de tour: text-sm, Gris 500, icono de hoja
+  - Duracion y precio: text-base, Verde Agro, bold
+  - Actividades disponibles: lista con iconos y nombres
+  - Servicios incluidos: chips con iconos (almuerzo, guia, transporte)
+  - Rating: estrellas (1-5) con contador de reseñas
+  - Boton "Solicitar recorrido": Primary button, full width
+```
+
+#### 9.3.5ter Boton "Solicitar recorrido"
+
+```
+Accion: Abre formulario de solicitud de reserva de tour agroturistico
+Ubicacion: Dentro del popup del punto de agroturismo en el mapa
+Comportamiento:
+  - Si el usuario no esta autenticado: Redirige a login/registro
+  - Si el usuario esta autenticado: Abre modal con formulario de reserva
+    - Campos del formulario:
+      - Fecha deseada (date picker)
+      - Numero de personas (select o input number)
+      - Horario preferido (manana/tarde)
+      - Servicios adicionales (checkboxes: transporte, hospedaje)
+      - Mensaje o notas (textarea)
+      - Boton "Enviar solicitud"
+    - Confirmacion: Toast de exito con mensaje "Tu solicitud de recorrido ha sido enviada. El guia te contactara pronto."
+```
+
 #### 9.3.6 Boton "Solicitar producto"
 
 ```
@@ -682,6 +723,7 @@ Controles:
 Leyenda:
   - Muestra todos los iconos de productos disponibles
   - Indica cantidad de puntos por producto
+  - Incluye icono de agroturismo con contador de fincas abiertas al turismo
 ```
 
 ### 9.4 Seccion Tienda
@@ -773,6 +815,7 @@ Contenido:
 - Guineo/Plátano (producto insignia)
 - Logo mark para favicon
 - Iconos de productos agricolas para el mapa (guineo, banano, cafe, cacao, aguacate, naranja, yuca, maiz, tomate, mango)
+- Icono de agroturismo para el mapa (finca abierta al turismo, estilo cyan)
 - Avatar de Nebbi para el chatbot
 
 ### mascot Nebbi - Especificaciones de arte
@@ -798,3 +841,4 @@ Variantes necesarias:
 | --- | --- | --- | --- |
 | 1.0.0 | 28/05/2026 | Equipo Nebbi | Version inicial del diseño visual y frontend spec |
 | 1.1.0 | 28/05/2026 | Equipo Nebbi | Agregada mascota Nebbi, mapa de productos y seccion tienda |
+| 1.2.0 | 29/05/2026 | Equipo Nebbi | Agregados puntos de agroturismo al mapa con popup, boton "Solicitar recorrido" y formulario de reserva |

@@ -1,51 +1,141 @@
-import Link from "next/link";
-import { MapPin, Search, Filter, Layers } from "lucide-react";
+'use client';
+
+import { useState, useCallback, useEffect } from 'react';
+import dynamic from 'next/dynamic';
+import { Layers } from 'lucide-react';
+import SearchBar from './components/SearchBar';
+import FilterSidebar from './components/FilterSidebar';
+import LayerControl from './components/LayerControl';
+import { FilterState } from './components/types';
+import { mockProducers } from '@/data/producers';
+import { mockAgrotourism } from '@/data/agrotourism';
+
+const MapView = dynamic(() => import('./components/MapView'), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#DEDB8D]/40 to-[#E3F2FD]/40">
+      <div className="text-center">
+        <div className="w-16 h-16 border-4 border-[#6D9E13] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+        <p className="text-gray-500">Cargando mapa...</p>
+      </div>
+    </div>
+  ),
+});
+
+const defaultFilters: FilterState = {
+  products: [],
+  certified: 'all',
+  municipality: 'Todos',
+  searchQuery: '',
+};
 
 export default function MapaPage() {
+  const [filters, setFilters] = useState<FilterState>(defaultFilters);
+  const [isLayerOpen, setIsLayerOpen] = useState(false);
+  const [selectedProducer, setSelectedProducer] = useState<string | null>(null);
+  const [selectedAgrotourism, setSelectedAgrotourism] = useState<string | null>(null);
+  const [activeLayer, setActiveLayer] = useState<'street' | 'satellite' | 'terrain'>('street');
+  const [showOnlyCertified, setShowOnlyCertified] = useState(false);
+  const [showAgrotourism, setShowAgrotourism] = useState(true);
+
+  const handleSearchChange = useCallback((query: string) => {
+    setFilters((prev) => ({ ...prev, searchQuery: query }));
+  }, []);
+
+  const handleFiltersChange = useCallback((newFilters: FilterState) => {
+    setFilters(newFilters);
+  }, []);
+
+  const handleProducerSelect = useCallback((producerId: string) => {
+    setSelectedProducer(producerId);
+    setSelectedAgrotourism(null);
+  }, []);
+
+  const handleAgrotourismSelect = useCallback((agrotourismId: string) => {
+    setSelectedAgrotourism(agrotourismId);
+    setSelectedProducer(null);
+  }, []);
+
+  const handleLayerChange = useCallback((layer: 'street' | 'satellite' | 'terrain') => {
+    setActiveLayer(layer);
+  }, []);
+
+  const handleShowCertifiedChange = useCallback((show: boolean) => {
+    setShowOnlyCertified(show);
+  }, []);
+
+  useEffect(() => {
+    if (filters.searchQuery.trim().length > 0) {
+      const matchingProducer = mockProducers.find(
+        (p) => p.name.toLowerCase().includes(filters.searchQuery.toLowerCase())
+      );
+      if (matchingProducer) {
+        setSelectedProducer(matchingProducer.id);
+      } else {
+        setSelectedProducer(null);
+      }
+    } else {
+      setSelectedProducer(null);
+    }
+  }, [filters.searchQuery]);
+
   return (
-    <main className="flex-1 bg-[#FFFAF3]">
-      <div className="relative">
-        <div className="absolute top-0 left-0 right-0 z-10 p-4">
+    <div className="flex-1 flex bg-[#FFFAF3] relative overflow-hidden">
+      <FilterSidebar
+        filters={filters}
+        onFiltersChange={handleFiltersChange}
+      />
+
+      <div className="flex-1 flex flex-col min-h-0">
+        <div className="relative bg-[#FFFAF3] px-4 py-3 shrink-0">
           <div className="max-w-[1280px] mx-auto flex flex-col sm:flex-row gap-3">
-            <div className="relative flex-1">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Buscar productos en el mapa..."
-                className="w-full pl-12 pr-4 py-3 rounded-xl bg-white shadow-lg border-0 outline-none focus:ring-2 focus:ring-[#6D9E13]/30"
-              />
-            </div>
-            <div className="flex gap-2">
-              <button className="flex items-center gap-2 px-4 py-3 bg-white rounded-xl shadow-lg text-sm font-medium text-gray-700 hover:text-[#6D9E13] transition-colors">
-                <Filter className="w-4 h-4" />
-                Filtros
-              </button>
-              <button className="flex items-center gap-2 px-4 py-3 bg-white rounded-xl shadow-lg text-sm font-medium text-gray-700 hover:text-[#6D9E13] transition-colors">
+            <SearchBar
+              value={filters.searchQuery}
+              onChange={handleSearchChange}
+              placeholder="Buscar fincas, municipios, productos..."
+            />
+            <div className="flex gap-2 shrink-0 relative">
+              <button
+                onClick={() => setIsLayerOpen(!isLayerOpen)}
+                className={`flex items-center gap-2 px-4 py-3 rounded-xl shadow-lg text-sm font-medium transition-colors ${
+                  isLayerOpen
+                    ? 'bg-[#6D9E13] text-white'
+                    : 'bg-white text-gray-700 hover:text-[#6D9E13]'
+                }`}
+              >
                 <Layers className="w-4 h-4" />
-                Capas
+                <span className="hidden sm:inline">Capas</span>
               </button>
+
+              <LayerControl
+                isOpen={isLayerOpen}
+                onClose={() => setIsLayerOpen(false)}
+                activeLayer={activeLayer}
+                onLayerChange={handleLayerChange}
+                showCertified={showOnlyCertified}
+                onShowCertifiedChange={handleShowCertifiedChange}
+                showAgrotourism={showAgrotourism}
+                onShowAgrotourismChange={setShowAgrotourism}
+              />
             </div>
           </div>
         </div>
 
-        <div className="w-full h-[calc(100vh-64px)] bg-gradient-to-br from-[#DEDB8D]/40 to-[#E3F2FD]/40 flex items-center justify-center">
-          <div className="text-center p-8">
-            <div className="w-24 h-24 rounded-2xl bg-white shadow-lg flex items-center justify-center mx-auto mb-6">
-              <MapPin className="w-12 h-12 text-[#6D9E13]" />
-            </div>
-            <h2 className="font-heading font-bold text-2xl text-gray-800 mb-2">Mapa Interactivo</h2>
-            <p className="text-gray-500 max-w-md mx-auto mb-6">
-              Visualiza fincas y productos del Magdalena en tiempo real. Cada punto muestra certificaciones y trazabilidad.
-            </p>
-            <Link
-              href="/tienda"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#6D9E13] text-white font-semibold rounded-lg hover:bg-[#4A7010] transition-colors"
-            >
-              Ver Catalogo de Productos
-            </Link>
-          </div>
+        <div className="flex-1 min-h-0 relative overflow-hidden">
+          <MapView
+            producers={mockProducers}
+            agrotourismPoints={mockAgrotourism}
+            filters={filters}
+            selectedProducerId={selectedProducer}
+            selectedAgrotourismId={selectedAgrotourism}
+            onProducerClick={handleProducerSelect}
+            onAgrotourismClick={handleAgrotourismSelect}
+            activeLayer={activeLayer}
+            showOnlyCertified={showOnlyCertified}
+            showAgrotourism={showAgrotourism}
+          />
         </div>
       </div>
-    </main>
+    </div>
   );
 }

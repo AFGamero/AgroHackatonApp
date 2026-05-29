@@ -52,7 +52,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col bg-[#FFFAF3]">
         <Providers>
           <Header />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1 flex flex-col">{children}</main>
           <Footer />
         </Providers>
       </body>

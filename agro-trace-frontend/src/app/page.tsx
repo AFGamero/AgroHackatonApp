@@ -273,11 +273,11 @@ export default function HomePage() {
 
           <div className="mt-14">
             <Link
-              href="/auth/register"
+              href="/pasaporte"
               className="inline-flex items-center gap-2 px-8 py-4 bg-[#FFFAF3] text-[#4A7010] font-semibold rounded-lg hover:bg-[#DEDB8D] transition-all shadow-md hover:shadow-lg"
             >
               <ShieldCheck className="w-5 h-5" />
-              Registrar Certificaciones
+              Ver Ejemplo de Pasaporte
             </Link>
           </div>
         </div>
@@ -298,13 +298,6 @@ export default function HomePage() {
               Buyers internacionales escanean el QR del producto, ven la trazabilidad completa, certificaciones y pueden enviarte una solicitud de compra directamente.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/auth/register"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#FFFAF3] text-[#4A7010] font-semibold rounded-lg hover:bg-[#DEDB8D] transition-all shadow-md hover:shadow-lg"
-              >
-                <Package className="w-5 h-5" />
-                Crear Cuenta Gratis
-              </Link>
               <Link
                 href="/pasaporte"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-[#FFFAF3] text-[#FFFAF3] font-semibold rounded-lg hover:bg-[#FFFAF3]/10 transition-all"
