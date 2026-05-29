@@ -1,4 +1,4 @@
-# Feature Specification: Pasaporte Digital y QR
+ya # Feature Specification: Pasaporte Digital y QR
 
 **Version**: 1.0.0  
 **Creado**: 27/05/2026  
