@@ -26,7 +26,7 @@ export function Header() {
       <div className="max-w-[1280px] mx-auto px-6 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3 shrink-0">
           <Image
-            src="/logo-nebbi.png"
+            src="/nebbi.png"
             alt="Nebbi Logo"
             width={40}
             height={40}

@@ -1,6 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
-import { NebbiMascot, ProductIcon, CertificationBadge } from "@/components/branding";
+import { ProductIcon, CertificationBadge } from "@/components/branding";
 import {
   MapPin,
   CheckCircle,
@@ -106,7 +107,14 @@ export default function HomePage() {
           <div className="hidden md:flex justify-center">
             <div className="relative">
               <div className="absolute inset-0 bg-[#FFFAF3]/10 rounded-full blur-3xl scale-150" />
-              <NebbiMascot size={300} />
+              <Image
+                src="/logo-nebbi.png"
+                alt="Nebbi Mascot"
+                width={300}
+                height={270}
+                className="drop-shadow-2xl"
+                priority
+              />
             </div>
           </div>
         </div>
