@@ -15,3 +15,5 @@ databaseChangeLog:
       file: db/migration/changelogs/V7__passports_qr_schema.yaml
   - include:
       file: db/migration/changelogs/V8__tourism_purchase_schema.yaml
+  - include:
+      file: db/migration/changelogs/V9__certification_status.yaml
