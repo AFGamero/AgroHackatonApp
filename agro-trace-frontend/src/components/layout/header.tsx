@@ -4,6 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { ShoppingCart } from "lucide-react";
+import { useCart } from "@/hooks/useCart";
 
 const navLinks = [
   { href: "/tienda", label: "Tienda" },
@@ -16,6 +18,7 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
+  const { cartCount, toggleCart } = useCart();
 
   useEffect(() => {
     setMounted(true);
@@ -63,6 +66,19 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
+          <button
+            onClick={toggleCart}
+            className="relative p-2 text-[#FFFAF3] rounded-lg hover:bg-[#FFFAF3]/10 transition-colors"
+            aria-label={`Carrito${cartCount > 0 ? ` (${cartCount} productos)` : ""}`}
+          >
+            <ShoppingCart className="w-5 h-5" />
+            {cartCount > 0 && (
+              <span className="absolute -top-1 -right-1 w-5 h-5 bg-[#FFFAF3] text-[#4A7010] text-[10px] font-bold rounded-full flex items-center justify-center">
+                {cartCount > 99 ? "99+" : cartCount}
+              </span>
+            )}
+          </button>
+
           <Link
             href="/tienda"
             className="hidden md:inline-flex items-center px-4 py-2 text-sm font-medium text-[#FFFAF3] border border-[#FFFAF3]/30 rounded-lg hover:bg-[#FFFAF3]/10 transition-colors"
