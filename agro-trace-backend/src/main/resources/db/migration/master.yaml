@@ -19,3 +19,7 @@ databaseChangeLog:
       file: db/migration/changelogs/V9__certification_status.yaml
   - include:
       file: db/migration/changelogs/V10__products_schema.yaml
+  - include:
+      file: db/migration/changelogs/V11__cart_schema.yaml
+  - include:
+      file: db/migration/changelogs/V12__order_schema.yaml
